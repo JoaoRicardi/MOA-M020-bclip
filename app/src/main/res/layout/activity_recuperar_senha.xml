@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".RecuraSenhaActivity">
+    tools:context=".RecuperarSenhaActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -47,27 +47,27 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="61dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorVerde"
         android:textColorHint="@color/colorVerde"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/recuperar_senha_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="395dp"
+            android:layout_height="match_parent"
             android:text="Senha" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="229dp"
-        android:layout_height="71dp"
+        android:id="@+id/recuperar_senha_button"
+        android:layout_width="387dp"
+        android:layout_height="62dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
