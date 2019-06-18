@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip;
+package br.com.digitalhouse.bclip.activities;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import br.com.digitalhouse.bclip.R;
 
 public class LoginActivity extends AppCompatActivity {
 
