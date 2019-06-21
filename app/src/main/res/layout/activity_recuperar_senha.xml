@@ -5,79 +5,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".activities.RecuperarSenhaActivity">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".activities.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="165dp"
-        android:layout_height="176dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iconi" />
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/textInputEditText"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_bclip"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="16dp"
+            android:text="digite seu email cadastrado."
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp" />
+
+        <android.support.design.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:hint="Insira seu email cadastrado, você receberá um link para recuperar sua senha "
-            android:textColor="@color/colorVerde"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-    </android.support.design.widget.TextInputLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="380dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorVerde"
-        android:textColorHint="@color/colorVerde"
-        app:layout_constraintBottom_toTopOf="@+id/recuperar_senha_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="395dp"
-            android:layout_height="match_parent"
-            android:text="Senha" />
-    </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="e-mail">
 
-    <Button
-        android:id="@+id/recuperar_senha_button"
-        android:layout_width="387dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorVerde"
-        android:text="Recuperar Senha"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621" />
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/et_email_recuperar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:text="recuperar senha"
+                    android:id="@+id/btn_recupera_senha"
+                    android:textColor="@color/colorAccent"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
+
+        </android.support.design.card.MaterialCardView>
+
+    </LinearLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>

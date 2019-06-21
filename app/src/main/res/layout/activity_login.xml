@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.design.widget.CoordinatorLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity"
-    android:background="@color/colorAccent">
+    android:background="@color/colorPrimary"
+    tools:context=".activities.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,91 +15,96 @@
 
         <ImageView
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_bclip"
             android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:src="@drawable/iconi"/>
+            android:layout_marginTop="32dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorVerde"
-            android:layout_marginTop="-20dp"
-            android:textSize="32dp"
             android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="login"/>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:textColorHint="@color/colorAccent"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="40dp"
-            app:boxBackgroundColor="@color/colorVerde"
-            android:hint="usuário">
-
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_usuario_edit_text"
-                android:inputType="textEmailAddress" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-            android:textColorHint="@color/colorAccent"
-            android:hint="senha"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:boxBackgroundColor="@color/colorVerde">
-
-            <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_senha_edit_text"
-                android:inputType="textEmailAddress"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="esqueceu a senha?"
-            android:textColor="@color/colorVerde"
-            android:layout_gravity="start"
-            android:layout_marginStart="40dp"
-            android:id="@+id/login_esqueceu_senha_button"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorVerde"
-            android:textStyle="bold"
-            android:textSize="24dp"
+            android:text="login"
             android:textColor="@color/colorAccent"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="OK"
-            android:id="@+id/login_button"/>
+            android:textSize="40dp" />
 
-        <TextView
+        <android.support.design.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="criar nova conta"
-            android:textColor="@color/colorVerde"
-            android:layout_gravity="start"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
-            android:id="@+id/login_criar_conta_button"/>
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="usuário">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/et_usuario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="@color/colorPrimary" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="senha">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorPrimary"
+                        android:id="@+id/et_senha"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="esqueceu a senha?"
+                    android:layout_gravity="right"
+                    android:textFontWeight="bold"
+                    android:id="@+id/btn_esqueceu"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:text="ok"
+                    android:id="@+id/btn_login"
+                    android:textColor="@color/colorAccent"
+                    android:textAllCaps="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="criar nova conta"
+                    android:layout_gravity="left"
+                    android:textFontWeight="bold"
+                    android:id="@+id/btn_registro"/>
+            </LinearLayout>
+
+        </android.support.design.card.MaterialCardView>
 
     </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+
+
+</android.support.constraint.ConstraintLayout>

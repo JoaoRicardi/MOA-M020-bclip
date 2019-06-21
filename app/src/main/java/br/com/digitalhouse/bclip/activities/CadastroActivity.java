@@ -1,74 +1,77 @@
 package br.com.digitalhouse.bclip.activities;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import br.com.digitalhouse.bclip.R;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private TextInputEditText nomeUsuario;
-    private TextInputEditText emailUsuario;
-    private TextInputEditText senhaUsuario;
-    private TextInputEditText confirmaSenhaUsuario;
-
-    private Button btnSalvaUsuario;
-
+    private TextInputEditText usuarioEditText;
+    private TextInputEditText emailEditText;
+    private TextInputEditText senhaEditText;
+    private TextInputEditText confirmaSenhaEditText;
+    private Button okButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-//        nomeUsuario = findViewById(R.id.edt_text_nome_usuario);
-//        emailUsuario = findViewById(R.id.edt_text_email);
-//        senhaUsuario = findViewById(R.id.edt_text_senha);
-//        confirmaSenhaUsuario = findViewById(R.id.edt_text_confirma_senha);
-//
-//        btnSalvaUsuario = findViewById(R.id.btn_ok);
+        usuarioEditText = findViewById(R.id.et_usuario);
+        emailEditText = findViewById(R.id.et_email);
+        senhaEditText = findViewById(R.id.et_senha);
+        confirmaSenhaEditText = findViewById(R.id.et_confirma_senha);
+        okButton = findViewById(R.id.btn_ok);
 
-//
-//
-//        btnSalvaUsuario.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(nomeUsuario.getEditableText().toString().equals("")){
-//                    nomeUsuario.setError("Campo nome não pode ser vazio!");
-//                }
-//                else if (emailUsuario.getEditableText().toString().equals("")){
-//                    emailUsuario.setError("Campo Email não pode ser vazio!");
-//                }
-//
-//                else if (senhaUsuario.getEditableText().toString().equals(senhaUsuario.getEditableText().toString())
-//                        && !confirmaSenhaUsuario.toString().equals("")
-//                        && !confirmaSenhaUsuario.toString().equals("")){
-//
-//                    botaoClicado(v);
-//
-//                }else {
-//                    senhaUsuario.setError("senhas não conferem!");
-//                }
-//
-//            }
-//        });
-//
-//    }
-//    public void botaoClicado(View view){
-//        Snackbar.make(view, "USUARIO CADASTRADO!!!", Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        }).setActionTextColor(getResources().getColor(R.color.colorPrimary))
-//                .show();
-//
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                botaoClicado(v);
+            }
+        });
+    }
+
+    private void botaoClicado(View view) {
+        usuarioEditText.setError(null);
+        emailEditText.setError(null);
+        senhaEditText.setError(null);
+        confirmaSenhaEditText.setError(null);
+
+        if (!senhaEditText.getEditableText().toString().equals(confirmaSenhaEditText.getEditableText().toString())){
+            senhaEditText.setError("as senhas não são as mesmas");
+            confirmaSenhaEditText.setError("as senhas não são as mesmas");
+
+        } else if (emailEditText.getEditableText().toString().equals(" ")){
+            emailEditText.setError("esse campo não pode estar vazio");
+
+        } else if (usuarioEditText.getEditableText().toString().equals(" ")){
+            usuarioEditText.setError("esse campo não pode estar vazio");
+        }
+
+        else {
+            Snackbar.make(view, "usuario cadastrado com sucesso", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            irParaLogin();
+                        }
+                    }).setActionTextColor(getResources().getColor(R.color.colorAccent))
+                    .show();
+
+        }
 
     }
+
+    private void irParaLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }
+

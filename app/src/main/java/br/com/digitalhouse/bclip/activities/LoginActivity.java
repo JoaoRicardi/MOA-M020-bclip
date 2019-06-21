@@ -14,27 +14,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText usuarioEditText;
     private TextInputEditText senhaEditText;
-    private TextView esqueceuSenhaButton;
     private Button loginButton;
-    private TextView criarContaButton;
+    private TextView esqueceuTextview;
+    private TextView novaContaTextview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarioEditText = findViewById(R.id.login_usuario_edit_text);
-        senhaEditText = findViewById(R.id.login_senha_edit_text);
-        esqueceuSenhaButton = findViewById(R.id.login_esqueceu_senha_button);
-        loginButton = findViewById(R.id.login_button);
-        criarContaButton = findViewById(R.id.login_criar_conta_button);
-
-        esqueceuSenhaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recuperarSenha();
-            }
-        });
+        usuarioEditText = findViewById(R.id.et_usuario);
+        senhaEditText = findViewById(R.id.et_senha);
+        loginButton = findViewById(R.id.btn_login);
+        esqueceuTextview = findViewById(R.id.btn_esqueceu);
+        novaContaTextview = findViewById(R.id.btn_registro);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,23 +37,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        criarContaButton.setOnClickListener(new View.OnClickListener() {
+        esqueceuTextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                criarConta();
+                irParaEsqueceuActivity();
+            }
+        });
+
+        novaContaTextview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irParaRegistroActivity();
             }
         });
     }
 
-    private void criarConta() {
+    private void irParaRegistroActivity() {
         Intent intent = new Intent(this, CadastroActivity.class);
         startActivity(intent);
+
     }
 
-    private void recuperarSenha() {
-        // Mudar para mandar email
-        Intent intent = new Intent(this, MainActivity.class);
+    private void irParaEsqueceuActivity() {
+        Intent intent = new Intent(this, RecuperarSenhaActivity.class);
         startActivity(intent);
+
     }
 
     private void logar() {
@@ -70,25 +72,22 @@ public class LoginActivity extends AppCompatActivity {
         usuarioEditText.setError(null);
         senhaEditText.setError(null);
 
-        if (usuarioDigitado.equals("mariana@digitalhouse.com") && senhaDigitada.equals("123456")) {
+        if (usuarioDigitado != null && senhaDigitada != null) {
 
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, FeedActivity.class);
 
             Bundle bundle = new Bundle();
 
-            bundle.putString("USUARIO", usuarioDigitado);
+            bundle.putString("NOME", usuarioDigitado);
 
             intent.putExtras(bundle);
 
             startActivity(intent);
-
         } else {
-            usuarioEditText.setError("Usuário e/ou senha incorreto(s)");
-            senhaEditText.setError("Usuário e/ou senha incorreto(s)");
+            usuarioEditText.setError("usuário e/ou senha incorreto(s)");
+            senhaEditText.setError("usuário e/ou senha incorreto(s)");
         }
     }
 
 
 }
-
-
