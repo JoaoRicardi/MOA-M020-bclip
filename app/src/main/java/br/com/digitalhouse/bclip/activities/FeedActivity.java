@@ -14,15 +14,15 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        Intent intent = getIntent();
-
-        Bundle bundle = intent.getExtras();
-
-        String usuario = bundle.getString("NOME");
-
-        TextView usuarioText = findViewById(R.id.feed_text_view);
-
-        usuarioText.setText("Olá, " + usuario);
+//        Intent intent = getIntent();
+//
+//        Bundle bundle = intent.getExtras();
+//
+//        String usuario = bundle.getString("NOME");
+//
+//        TextView usuarioText = findViewById(R.id.feed_text_view);
+//
+//        usuarioText.setText("Olá, " + usuario);
 
 
     }
