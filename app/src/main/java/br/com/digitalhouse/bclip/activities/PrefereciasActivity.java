@@ -86,7 +86,7 @@ public class PrefereciasActivity extends AppCompatActivity implements Preferenci
     @Override
     public void onPreferenciaClick(int position) {
 
-        Toast.makeText(this, "A opção  " + getListaPreferencias().get(position).getPreferencia() + " foi delecionada!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "A opção  " + getListaPreferencias().get(position).getPreferencia() + " foi selecionada!", Toast.LENGTH_SHORT).show();
 
 
     }

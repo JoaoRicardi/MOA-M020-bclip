@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (usuarioDigitado != null && senhaDigitada != null) {
 
-            Intent intent = new Intent(this, FeedActivity.class);
+            Intent intent = new Intent(this, CadastroEmpresaActivity.class);
 
             Bundle bundle = new Bundle();
 

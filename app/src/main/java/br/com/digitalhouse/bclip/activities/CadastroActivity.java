@@ -17,6 +17,8 @@ public class CadastroActivity extends AppCompatActivity {
     private TextInputEditText senhaEditText;
     private TextInputEditText confirmaSenhaEditText;
     private Button okButton;
+    private String emBranco = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +46,13 @@ public class CadastroActivity extends AppCompatActivity {
         confirmaSenhaEditText.setError(null);
 
         if (!senhaEditText.getEditableText().toString().equals(confirmaSenhaEditText.getEditableText().toString())){
-            senhaEditText.setError("as senhas não são as mesmas");
-            confirmaSenhaEditText.setError("as senhas não são as mesmas");
+            senhaEditText.setError("as senhas precisam ser as mesmas");
+            confirmaSenhaEditText.setError("as senhas precisam as mesmas");
 
-        } else if (emailEditText.getEditableText().toString().equals(" ")){
+        } else if (emailEditText.getEditableText().toString().equals(emBranco)){
             emailEditText.setError("esse campo não pode estar vazio");
 
-        } else if (usuarioEditText.getEditableText().toString().equals(" ")){
+        } else if (usuarioEditText.getEditableText().toString().equals(emBranco)){
             usuarioEditText.setError("esse campo não pode estar vazio");
         }
 
