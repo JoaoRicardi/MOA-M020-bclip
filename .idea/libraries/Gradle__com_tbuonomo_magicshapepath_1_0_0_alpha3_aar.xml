@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tbuonomo:magicshapepath:1.0.0-alpha3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7ac856a5b342931df61f3b23a6e9395d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7ac856a5b342931df61f3b23a6e9395d/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tbuonomo/magicshapepath/1.0.0-alpha3/af4645eaa20181a46071ef3f2d53e90fe18adfa8/magicshapepath-1.0.0-alpha3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
