@@ -26,13 +26,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        viewHolder.titulo.setText("Padarias");
-        viewHolder.noticia.setText("Setor inova a cada ano, habito de se alimentar cresce entre os brasileiros");
+        viewHolder.titulo.setText("McAfee promete revelar criador do Bitcoin e depois recua");
+        viewHolder.noticia.setText("A história de Nakamoto, um pseudônimo para se referir a uma pessoa ou grupo de pessoas, é ferozmente debatida há anos, com uma longa lista de teorias");
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 20;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
