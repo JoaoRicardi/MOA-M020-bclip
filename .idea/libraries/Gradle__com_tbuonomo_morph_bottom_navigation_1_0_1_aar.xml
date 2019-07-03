@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.tbuonomo:morph-bottom-navigation:1.0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f562fe4f0c76130a66c8901e45652b6f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f562fe4f0c76130a66c8901e45652b6f/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tbuonomo/morph-bottom-navigation/1.0.1/6ec525cad6fd4ea514ff5d376d11acd4d7bb6b09/morph-bottom-navigation-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
