@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import br.com.digitalhouse.bclip.R;
@@ -86,11 +87,25 @@ public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapte
 
         private void setupCelula(View v, Preferencia preferencia) {
             if (preferencia.getAtivado()) {
+
                 Drawable icon = v.getContext().getResources().getDrawable(R.drawable.ic_check_black_24dp);
                 btnPreferencia.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+
+                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Ativada", Toast.LENGTH_SHORT).show();
+
+                int colorAtivado = v.getContext().getResources().getColor(R.color.verde);
+                btnPreferencia.setBackgroundColor(colorAtivado);
+
+
             } else {
+
                 Drawable icon = v.getContext().getResources().getDrawable(R.drawable.ic_add_black_24dp);
                 btnPreferencia.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
+
+                int colorDesativado = v.getContext().getResources().getColor(R.color.Selecionado);
+                btnPreferencia.setBackgroundColor(colorDesativado);
+
+                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Desativada!", Toast.LENGTH_SHORT).show();
             }
         }
 
