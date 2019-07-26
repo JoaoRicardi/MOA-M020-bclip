@@ -1,70 +1,71 @@
 package br.com.digitalhouse.bclip.activities;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import br.com.digitalhouse.bclip.R;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText usuarioEditText;
     private TextInputEditText senhaEditText;
-    private Button loginButton;
-    private TextView esqueceuTextview;
-    private TextView novaContaTextview;
-
+    private TextView esqueceuTextView;
+    private Button okButton;
+    private TextView novaContaEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarioEditText = findViewById(R.id.et_usuario);
-        senhaEditText = findViewById(R.id.et_senha);
-        loginButton = findViewById(R.id.btn_login);
-        esqueceuTextview = findViewById(R.id.btn_esqueceu);
-        novaContaTextview = findViewById(R.id.btn_registro);
+        usuarioEditText = findViewById(R.id.login_usuario_edit_text);
+        senhaEditText = findViewById(R.id.login_senha_edit_text);
+        esqueceuTextView = findViewById(R.id.login_esqueceu_text_view);
+        okButton = findViewById(R.id.login_button_ok_id);
+        novaContaEditText = findViewById(R.id.login_registrar_text_view);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        okButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                logar();
+            public void onClick(View view) {
+                irParaCadastroActivity();
             }
         });
 
-        esqueceuTextview.setOnClickListener(new View.OnClickListener() {
+        esqueceuTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 irParaEsqueceuActivity();
             }
         });
 
-        novaContaTextview.setOnClickListener(new View.OnClickListener() {
+        novaContaEditText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 irParaRegistroActivity();
             }
         });
+
     }
 
     private void irParaRegistroActivity() {
-        Intent intent = new Intent(this, CadastroActivity.class);
+        Intent intent = new Intent(this, RegistroActivity.class);
         startActivity(intent);
-
     }
 
     private void irParaEsqueceuActivity() {
-        Intent intent = new Intent(this, RecuperarSenhaActivity.class);
+        Intent intent = new Intent(this, EsqueceuActivity.class);
         startActivity(intent);
-
     }
 
-    private void logar() {
+    private void irParaCadastroActivity() {
 
         String usuarioDigitado = usuarioEditText.getEditableText().toString();
         String senhaDigitada = senhaEditText.getEditableText().toString();
@@ -72,9 +73,14 @@ public class LoginActivity extends AppCompatActivity {
         usuarioEditText.setError(null);
         senhaEditText.setError(null);
 
-        if (usuarioDigitado != null && senhaDigitada != null) {
+        if(usuarioDigitado == null || senhaDigitada == null){
 
-            Intent intent = new Intent(this, CadastroEmpresaActivity.class);
+            usuarioEditText.setError("esse campo não pode ficar em branco");
+            senhaEditText.setError("esse campo não pode ficar em branco");
+
+        } else {
+
+            Intent intent = new Intent(this, CadastroActivity.class);
 
             Bundle bundle = new Bundle();
 
@@ -83,11 +89,10 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtras(bundle);
 
             startActivity(intent);
-        } else {
-            usuarioEditText.setError("usuário e/ou senha incorreto(s)");
-            senhaEditText.setError("usuário e/ou senha incorreto(s)");
+
         }
+
+
+
     }
-
-
 }

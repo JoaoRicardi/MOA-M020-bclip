@@ -7,9 +7,6 @@ public class Preferencia implements Serializable {
     private String preferencia;
     private Boolean ativado;
 
-
-
-
     public Preferencia(String preferencia, Boolean ativado) {
         this.preferencia = preferencia;
         this.ativado = ativado;

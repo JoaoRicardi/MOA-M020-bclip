@@ -1,14 +1,8 @@
 package br.com.digitalhouse.bclip.model;
 
-import java.io.Serializable;
-
-public class Concorrente implements Serializable {
+public class Concorrente {
 
     private String nomeConcorrente;
-
-    public Concorrente(String nomeConcorrente) {
-        this.nomeConcorrente = nomeConcorrente;
-    }
 
     public String getNomeConcorrente() {
         return nomeConcorrente;
