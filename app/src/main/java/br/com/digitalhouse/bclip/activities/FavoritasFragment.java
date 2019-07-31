@@ -38,7 +38,7 @@ public class FavoritasFragment extends Fragment {
 
         List<Noticia> noticiaList = getListaNoticia();
 
-        NoticiaAdapter noticiaAdapter = new NoticiaAdapter(noticiaList);
+        NoticiaAdapter noticiaAdapter = new NoticiaAdapter();
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         RecyclerView recyclerView = view.findViewById(R.id.noticias_recycler_id);
