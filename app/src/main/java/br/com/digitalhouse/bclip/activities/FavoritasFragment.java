@@ -16,6 +16,7 @@ import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.adapter.NoticiaAdapter;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.Noticia;
+import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,8 +38,9 @@ public class FavoritasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
 
         List<Noticia> noticiaList = getListaNoticia();
+        ArrayList<NoticiaFromApi> noticiaFromApiArrayList = new ArrayList<>();
 
-        NoticiaAdapter noticiaAdapter = new NoticiaAdapter();
+        NoticiaAdapter noticiaAdapter = new NoticiaAdapter(noticiaFromApiArrayList, noticiaListerner);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         RecyclerView recyclerView = view.findViewById(R.id.noticias_recycler_id);

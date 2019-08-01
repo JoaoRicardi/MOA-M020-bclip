@@ -1,5 +1,6 @@
 package br.com.digitalhouse.bclip.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,12 +19,13 @@ import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.adapter.NoticiaAdapter;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.Noticia;
+import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 import br.com.digitalhouse.bclip.viewmodel.NoticiaViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NoticiasFragment extends Fragment {
+public class NoticiasFragment extends Fragment implements NoticiaListener{
 
 
     public NoticiasFragment() {
@@ -39,7 +41,9 @@ public class NoticiasFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
 
-        NoticiaAdapter noticiaAdapter = new NoticiaAdapter();
+        ArrayList<NoticiaFromApi> noticiaFromApiArrayList = new ArrayList<>();
+
+        NoticiaAdapter noticiaAdapter = new NoticiaAdapter(noticiaFromApiArrayList, this);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         RecyclerView recyclerView = view.findViewById(R.id.noticias_recycler_id);
@@ -56,6 +60,18 @@ public class NoticiasFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onNoticiaClicado(NoticiaFromApi noticia) {
+        Intent intent = new Intent(getContext(), DetalheNoticia.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("NOTICIA", noticia);
+
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 
 
