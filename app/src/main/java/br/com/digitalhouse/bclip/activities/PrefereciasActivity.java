@@ -1,12 +1,10 @@
 package br.com.digitalhouse.bclip.activities;
 
 import android.content.Intent;
-import android.nfc.Tag;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,7 +30,10 @@ public class PrefereciasActivity extends AppCompatActivity implements Preferenci
 
         List<Preferencia> listaPreferencia = getListaPreferencias();
 
-        recyclerView = findViewById(R.id.recycler_preferencias);
+//        recyclerView = findViewById(R.id.recycler_preferencias);
+
+
+
 
 
         PreferenciasAdapter preferenciasAdapter = new PreferenciasAdapter(listaPreferencia, this);
@@ -60,7 +61,7 @@ public class PrefereciasActivity extends AppCompatActivity implements Preferenci
 
     private void botaoClicado() {
 
-        Intent intent = new Intent(this, FeedActivity.class);
+        Intent intent = new Intent(this, CadastroEmpresaActivity.class);
 
         startActivity(intent);
 
@@ -87,6 +88,15 @@ public class PrefereciasActivity extends AppCompatActivity implements Preferenci
 
         Preferencia preferencia6 = new Preferencia("Markeing", false);
         preferenciaList.add(preferencia6);
+
+        Preferencia preferencia7 = new Preferencia("Esporte", true);
+        preferenciaList.add(preferencia7);
+
+        Preferencia preferencia8 = new Preferencia("Alimentação", true);
+        preferenciaList.add(preferencia8);
+
+        Preferencia preferencia9 = new Preferencia("Industria", false);
+        preferenciaList.add(preferencia9);
 
         return preferenciaList;
 

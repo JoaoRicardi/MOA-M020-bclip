@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:text="esqueceu a senha?"
                     android:layout_gravity="right"
-                    android:textFontWeight="bold"
+                    android:textStyle="bold"
                     android:id="@+id/btn_esqueceu"/>
 
                 <Button
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:text="criar nova conta"
                     android:layout_gravity="left"
-                    android:textFontWeight="bold"
+                    android:textStyle="bold"
                     android:id="@+id/btn_registro"/>
             </LinearLayout>
 

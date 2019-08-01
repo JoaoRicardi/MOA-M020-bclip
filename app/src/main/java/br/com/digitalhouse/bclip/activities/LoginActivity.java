@@ -1,12 +1,20 @@
 package br.com.digitalhouse.bclip.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import br.com.digitalhouse.bclip.R;
 
@@ -18,21 +26,32 @@ public class LoginActivity extends AppCompatActivity {
     private TextView esqueceuTextview;
     private TextView novaContaTextview;
 
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarioEditText = findViewById(R.id.et_usuario);
-        senhaEditText = findViewById(R.id.et_senha);
+//        usuarioEditText = findViewById(R.id.et_usuario);
+//        senhaEditText = findViewById(R.id.et_senha);
+
         loginButton = findViewById(R.id.btn_login);
         esqueceuTextview = findViewById(R.id.btn_esqueceu);
         novaContaTextview = findViewById(R.id.btn_registro);
 
+
+
+        mAuth = FirebaseAuth.getInstance();
+        usuarioEditText = (TextInputEditText) findViewById(R.id.et_usuario);
+        senhaEditText = (TextInputEditText) findViewById(R.id.et_senha);
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 logar();
             }
         });
@@ -66,6 +85,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void logar() {
 
+
+
         String usuarioDigitado = usuarioEditText.getEditableText().toString();
         String senhaDigitada = senhaEditText.getEditableText().toString();
 
@@ -74,15 +95,35 @@ public class LoginActivity extends AppCompatActivity {
 
         if (usuarioDigitado != null && senhaDigitada != null) {
 
-            Intent intent = new Intent(this, CadastroEmpresaActivity.class);
 
-            Bundle bundle = new Bundle();
+            mAuth.signInWithEmailAndPassword(usuarioDigitado, senhaDigitada)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
 
-            bundle.putString("NOME", usuarioDigitado);
+                                Intent intent = new Intent(LoginActivity.this, PrefereciasActivity.class);
 
-            intent.putExtras(bundle);
+                                Bundle bundle = new Bundle();
 
-            startActivity(intent);
+                                bundle.putString("NOME", usuarioDigitado);
+
+                                intent.putExtras(bundle);
+
+                                startActivity(intent);
+
+
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Falha na autenticação.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
+
+
         } else {
             usuarioEditText.setError("usuário e/ou senha incorreto(s)");
             senhaEditText.setError("usuário e/ou senha incorreto(s)");

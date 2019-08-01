@@ -51,60 +51,32 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="sua empresa">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/et_empresa_usuario"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="@color/colorPrimary" />
-                </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_preferencia_empresas_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="311dp" />
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="concorrente A">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textColor="@color/colorPrimary"
-                        android:id="@+id/et_concorrente_a"/>
-
-                </android.support.design.widget.TextInputLayout>
+                    android:hint="sua empresa"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="concorrente B">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textColor="@color/colorPrimary"
-                        android:id="@+id/et_concorrente_b"/>
-
-                </android.support.design.widget.TextInputLayout>
+                    android:hint="concorrente A"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="concorrente C">
+                    android:hint="concorrente B"/>
 
-                    <android.support.design.widget.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textColor="@color/colorPrimary"
-                        android:id="@+id/et_concorrente_c"/>
-
-                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="concorrente C"/>
 
                 <Button
                     android:layout_width="match_parent"

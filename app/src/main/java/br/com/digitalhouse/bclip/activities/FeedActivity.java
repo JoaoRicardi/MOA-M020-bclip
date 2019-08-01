@@ -1,16 +1,13 @@
 package br.com.digitalhouse.bclip.activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.bclip.adapter.FeedAdapter;
+import br.com.digitalhouse.bclip.adapters.FeedAdapter;
 
 public class FeedActivity extends AppCompatActivity {
 

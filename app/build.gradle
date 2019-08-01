@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -31,4 +35,24 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 
 
+    //########### ROOM DATABASE ORM ##########
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation "android.arch.persistence.room:rxjava2:1.1.1"
+
+    //########### Lifecycle components ###########
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+
+
+
 }
+
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin

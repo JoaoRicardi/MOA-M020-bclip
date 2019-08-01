@@ -2,10 +2,18 @@ package br.com.digitalhouse.bclip.model;
 
 import java.io.Serializable;
 
+
+
 public class Preferencia implements Serializable {
 
+
+
     private String preferencia;
+
     private Boolean ativado;
+
+
+
 
 
 
@@ -30,4 +38,6 @@ public class Preferencia implements Serializable {
     public void setAtivado(Boolean ativado) {
         this.ativado = ativado;
     }
+
+
 }
