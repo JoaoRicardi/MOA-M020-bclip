@@ -20,7 +20,7 @@ import br.com.digitalhouse.bclip.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextInputEditText usuarioEditText;
+    private TextInputEditText emailEditText;
     private TextInputEditText senhaEditText;
     private Button loginButton;
     private TextView esqueceuTextview;
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        usuarioEditText = (TextInputEditText) findViewById(R.id.et_usuario);
+        emailEditText = (TextInputEditText) findViewById(R.id.email_editText_id);
         senhaEditText = (TextInputEditText) findViewById(R.id.et_senha);
 
 
@@ -87,10 +87,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        String usuarioDigitado = usuarioEditText.getEditableText().toString();
+        String usuarioDigitado = emailEditText.getEditableText().toString();
         String senhaDigitada = senhaEditText.getEditableText().toString();
 
-        usuarioEditText.setError(null);
+        emailEditText.setError(null);
         senhaEditText.setError(null);
 
         if (usuarioDigitado != null && senhaDigitada != null) {
@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         } else {
-            usuarioEditText.setError("usuário e/ou senha incorreto(s)");
+            emailEditText.setError("usuário e/ou senha incorreto(s)");
             senhaEditText.setError("usuário e/ou senha incorreto(s)");
         }
     }

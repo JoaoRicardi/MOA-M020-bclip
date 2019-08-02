@@ -51,10 +51,10 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="usuário">
+                    android:hint="email">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/et_usuario"
+                        android:id="@+id/email_editText_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
