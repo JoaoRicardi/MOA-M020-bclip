@@ -10,7 +10,6 @@ import java.util.List;
 
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 import br.com.digitalhouse.bclip.repository.NoticiasRepository;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -21,7 +20,7 @@ public class NoticiaViewModel extends AndroidViewModel {
     private CompositeDisposable disposable = new CompositeDisposable();
     private NoticiasRepository noticiasRepository = new NoticiasRepository();
 
-    public NoticiaViewModel (@NonNull Application application) {
+    public NoticiaViewModel(@NonNull Application application) {
         super(application);
     }
 

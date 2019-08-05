@@ -1,15 +1,14 @@
 package br.com.digitalhouse.bclip.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import br.com.digitalhouse.bclip.R;
-
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -24,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
                 irParaLogin();
             }
         },3000);
+
     }
 
     private void irParaLogin() {

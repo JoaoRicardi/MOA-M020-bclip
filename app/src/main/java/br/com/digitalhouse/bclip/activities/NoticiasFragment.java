@@ -2,31 +2,34 @@ package br.com.digitalhouse.bclip.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.room.Room;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.bclip.adapter.NoticiaAdapter;
+import br.com.digitalhouse.bclip.adapters.NoticiaAdapter;
+import br.com.digitalhouse.bclip.database.AppDatabase;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
-import br.com.digitalhouse.bclip.model.Noticia;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 import br.com.digitalhouse.bclip.viewmodel.NoticiaViewModel;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NoticiasFragment extends Fragment implements NoticiaListener{
 
+
+    private AppDatabase db;
 
     public NoticiasFragment() {
         // Required empty public constructor
@@ -53,7 +56,20 @@ public class NoticiasFragment extends Fragment implements NoticiaListener{
 
         NoticiaViewModel noticiaViewModel = ViewModelProviders.of(getActivity()).get(NoticiaViewModel.class);
 
-        noticiaViewModel.atualizarNoticiasFromApi("apple");
+        db = Room.databaseBuilder(getContext(),
+                AppDatabase.class, AppDatabase.DATABASE_NAME).build();
+
+        db.preferenciaEmpresasDao().getAll()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(preferenciaEmpresas -> {
+                   // TODO chamar a API com todos da lista
+
+
+                    noticiaViewModel.atualizarNoticiasFromApi(preferenciaEmpresas.get(0).getPreferenciaEmpresa());
+
+                });
+
 
         noticiaViewModel.getNoticiaFromApiLiveData()
                 .observe(getActivity(), noticiaFromApiList -> noticiaAdapter.atualizarNoticias(noticiaFromApiList));

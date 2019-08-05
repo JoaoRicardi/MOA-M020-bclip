@@ -5,9 +5,18 @@ import java.io.Serializable;
 public class NoticiaFromApi implements Serializable {
 
     private String title;
+    private Source source;
     private String description;
     private String urlToImage;
     private String url;
+
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
 
     public String getUrl() {
         return url;

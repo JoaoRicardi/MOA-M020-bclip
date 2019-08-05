@@ -1,98 +1,135 @@
 package br.com.digitalhouse.bclip.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import br.com.digitalhouse.bclip.R;
 
-
 public class LoginActivity extends AppCompatActivity {
 
-    private TextInputEditText usuarioEditText;
+    private TextInputEditText emailEditText;
     private TextInputEditText senhaEditText;
-    private TextView esqueceuTextView;
-    private Button okButton;
-    private TextView novaContaEditText;
+    private Button loginButton;
+    private TextView esqueceuTextview;
+    private TextView novaContaTextview;
+
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login); // erro nessa linha
 
-        usuarioEditText = findViewById(R.id.login_usuario_edit_text);
-        senhaEditText = findViewById(R.id.login_senha_edit_text);
-        esqueceuTextView = findViewById(R.id.login_esqueceu_text_view);
-        okButton = findViewById(R.id.login_button_ok_id);
-        novaContaEditText = findViewById(R.id.login_registrar_text_view);
+//        usuarioEditText = findViewById(R.id.et_usuario);
+//        senhaEditText = findViewById(R.id.et_senha);
 
-        okButton.setOnClickListener(new View.OnClickListener() {
+        loginButton = findViewById(R.id.btn_login);
+        esqueceuTextview = findViewById(R.id.btn_esqueceu);
+        novaContaTextview = findViewById(R.id.btn_registro);
+
+
+
+        mAuth = FirebaseAuth.getInstance();
+        emailEditText = (TextInputEditText) findViewById(R.id.email_editText_id);
+        senhaEditText = (TextInputEditText) findViewById(R.id.et_senha);
+
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                irParaCadastroActivity();
+            public void onClick(View v) {
+
+                logar();
             }
         });
 
-        esqueceuTextView.setOnClickListener(new View.OnClickListener() {
+        esqueceuTextview.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 irParaEsqueceuActivity();
             }
         });
 
-        novaContaEditText.setOnClickListener(new View.OnClickListener() {
+        novaContaTextview.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 irParaRegistroActivity();
             }
         });
-
     }
 
     private void irParaRegistroActivity() {
-        Intent intent = new Intent(this, RegistroActivity.class);
+        Intent intent = new Intent(this, CadastroActivity.class);
         startActivity(intent);
+
     }
 
     private void irParaEsqueceuActivity() {
-        Intent intent = new Intent(this, EsqueceuActivity.class);
+        Intent intent = new Intent(this, RecuperarSenhaActivity.class);
         startActivity(intent);
+
     }
 
-    private void irParaCadastroActivity() {
+    private void logar() {
 
-        String usuarioDigitado = usuarioEditText.getEditableText().toString();
+
+
+        String usuarioDigitado = emailEditText.getEditableText().toString();
         String senhaDigitada = senhaEditText.getEditableText().toString();
 
-        usuarioEditText.setError(null);
+        emailEditText.setError(null);
         senhaEditText.setError(null);
 
-        if(usuarioDigitado == null || senhaDigitada == null){
+        if (usuarioDigitado != null && senhaDigitada != null) {
 
-            usuarioEditText.setError("esse campo não pode ficar em branco");
-            senhaEditText.setError("esse campo não pode ficar em branco");
+
+            mAuth.signInWithEmailAndPassword(usuarioDigitado, senhaDigitada)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+
+                                Intent intent = new Intent(LoginActivity.this, PreferenciasActivity.class);
+
+                                Bundle bundle = new Bundle();
+
+                                bundle.putString("NOME", usuarioDigitado);
+
+                                intent.putExtras(bundle);
+
+                                startActivity(intent);
+
+
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Falha na autenticação.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+
+
 
         } else {
-
-            Intent intent = new Intent(this, CadastroActivity.class);
-
-            Bundle bundle = new Bundle();
-
-            bundle.putString("NOME", usuarioDigitado);
-
-            intent.putExtras(bundle);
-
-            startActivity(intent);
-
+            emailEditText.setError("usuário e/ou senha incorreto(s)");
+            senhaEditText.setError("usuário e/ou senha incorreto(s)");
         }
-
-
-
     }
+
+
 }

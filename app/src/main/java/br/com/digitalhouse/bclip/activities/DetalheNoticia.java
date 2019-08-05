@@ -9,7 +9,6 @@ import android.webkit.WebViewClient;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 
 public class DetalheNoticia extends AppCompatActivity {

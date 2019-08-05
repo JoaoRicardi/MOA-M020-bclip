@@ -5,7 +5,7 @@
 
         />
     <solid
-        android:color="@color/grey"
+        android:color="@color/branco"
         />
     <padding
         android:left="0dp"
