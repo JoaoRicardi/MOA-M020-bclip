@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
 
 android {
     compileSdkVersion 29
@@ -75,4 +76,4 @@ dependencies {
 
 }
 
-apply plugin: 'com.google.gms.google-services'  // Google Play services Gradle plugin
+
