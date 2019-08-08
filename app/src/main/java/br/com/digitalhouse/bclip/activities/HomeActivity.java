@@ -16,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.FragmentActionsListener;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
+import br.com.digitalhouse.modules.Noticias.view.NoticiasFragment;
 
 public class HomeActivity extends AppCompatActivity implements FragmentActionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
 

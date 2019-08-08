@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.activities;
+package br.com.digitalhouse.modules.Login.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.activities.RecuperarSenhaActivity;
+import br.com.digitalhouse.modules.Cadastro.view.CadastroActivity;
+import br.com.digitalhouse.modules.Preferencias.view.PreferenciasActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

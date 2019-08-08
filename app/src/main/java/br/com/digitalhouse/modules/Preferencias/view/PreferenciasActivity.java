@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.activities;
+package br.com.digitalhouse.modules.Preferencias.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.adapters.PreferenciasAdapter;
 import br.com.digitalhouse.bclip.model.Preferencia;
+import br.com.digitalhouse.modules.Preferencias.viewmodel.PreferenciasViewModel;
 
 public class PreferenciasActivity extends AppCompatActivity implements PreferenciasAdapter.OnPreferenciaListener {
 
@@ -23,6 +25,8 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
     private RecyclerView recyclerView;
 
       private Button btnSalvarPreferencias;
+
+      private PreferenciasViewModel listaPreferenciasViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +76,10 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
 
         List<Preferencia> preferenciaList = new ArrayList<>();
 
-        Preferencia preferencia1 = new Preferencia("Tecnologia", true);
+        Preferencia preferencia1 = new Preferencia("Tecnologia", false);
         preferenciaList.add(preferencia1);
 
-        Preferencia preferencia2 = new Preferencia("Mobilidade Urbana", true);
+        Preferencia preferencia2 = new Preferencia("Mobilidade Urbana", false);
         preferenciaList.add(preferencia2);
 
         Preferencia preferencia3 = new Preferencia("Construção Civil", false);

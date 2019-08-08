@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.activities;
+package br.com.digitalhouse.modules.Noticias.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +15,12 @@ import androidx.room.Room;
 import java.util.ArrayList;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.activities.DetalheNoticia;
 import br.com.digitalhouse.bclip.adapters.NoticiaAdapter;
 import br.com.digitalhouse.bclip.database.AppDatabase;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
-import br.com.digitalhouse.bclip.viewmodel.NoticiaViewModel;
+import br.com.digitalhouse.modules.Noticias.viewmodel.NoticiaViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 

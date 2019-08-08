@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.activities;
+package br.com.digitalhouse.modules.CadastroEmpresa.view;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.activities.HomeActivity;
 import br.com.digitalhouse.bclip.adapters.PreferenciasEmpresasAdapter;
 import br.com.digitalhouse.bclip.database.AppDatabase;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;

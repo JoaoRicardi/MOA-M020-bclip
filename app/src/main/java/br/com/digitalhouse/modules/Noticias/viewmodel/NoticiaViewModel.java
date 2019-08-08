@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.viewmodel;
+package br.com.digitalhouse.modules.Noticias.viewmodel;
 
 import android.app.Application;
 

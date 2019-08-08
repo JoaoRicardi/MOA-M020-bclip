@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.modules.Login.view.LoginActivity;
 
 public class RecuperarSenhaActivity extends AppCompatActivity {
 

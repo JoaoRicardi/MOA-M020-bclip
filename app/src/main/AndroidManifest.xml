@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".activities.CadastroActivity"
+            android:name="br.com.digitalhouse.modules.Cadastro.view.CadastroActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
-            android:name=".activities.CadastroEmpresaActivity"
+            android:name="br.com.digitalhouse.modules.CadastroEmpresa.view.CadastroEmpresaActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
 
@@ -27,12 +27,12 @@
         <activity android:name=".activities.HomeActivity"></activity>
 
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="br.com.digitalhouse.modules.Login.view.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
 
         <activity
-            android:name=".activities.PreferenciasActivity"
+            android:name="br.com.digitalhouse.modules.Preferencias.view.PreferenciasActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <activity android:name=".activities.RecuperarSenhaActivity"

@@ -1,4 +1,4 @@
-package br.com.digitalhouse.bclip.activities;
+package br.com.digitalhouse.modules.Cadastro.view;
 
 import android.accounts.AuthenticatorException;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.modules.Login.view.LoginActivity;
 
 public class CadastroActivity extends AppCompatActivity {
 

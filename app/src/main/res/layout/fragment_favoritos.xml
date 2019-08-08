@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.NoticiasFragment">
+    tools:context="br.com.digitalhouse.modules.Noticias.view.NoticiasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/noticias_recycler_id"
