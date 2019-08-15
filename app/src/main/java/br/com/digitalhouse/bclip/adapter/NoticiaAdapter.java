@@ -65,7 +65,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
         private ImageView imagemNoticia;
         private TextView tituloNoticia;
-        private TextView descricaoNoticia;
+        private TextView fonteNoticia;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,12 +73,12 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
             imagemNoticia = itemView.findViewById(R.id.noticia_imagem_image_view);
             tituloNoticia = itemView.findViewById(R.id.noticia_titulo_text_view);
-            descricaoNoticia = itemView.findViewById(R.id.noticia_descricao_text_view);
+            fonteNoticia = itemView.findViewById(R.id.noticia_fonte_text_view);
         }
 
         public void bindNoticia(NoticiaFromApi noticiaFromApi) {
-            tituloNoticia.setText((noticiaFromApi.getTitle()));
-            descricaoNoticia.setText(noticiaFromApi.getDescription());
+            tituloNoticia.setText(noticiaFromApi.getTitle());
+            fonteNoticia.setText(noticiaFromApi.getName().getFontName());
             Picasso.get().load(noticiaFromApi.getUrlToImage()).into(imagemNoticia);
         }
     }

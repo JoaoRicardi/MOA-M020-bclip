@@ -25,6 +25,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
+        substituirFragment(new NoticiasFragment());
+
         bottomNavigationView = findViewById(R.id.home_botton_menu_id);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -43,20 +47,15 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-
         if(id == R.id.home_bottom_id){
-            transaction.replace(R.id.home_container_id, new NoticiasFragment());
-
+            substituirFragment(new NoticiasFragment());
         } else if (id == R.id.favoritos_bottom_id) {
-            transaction.replace(R.id.home_container_id, new FavoritasFragment());
+            substituirFragment(new FavoritasFragment());
 
         } else if (id == R.id.buscar_bottom_id){
-            transaction.replace(R.id.home_container_id, new BuscarFragment());
+            substituirFragment(new BuscarFragment());
         }
 
-        transaction.commit();
 
         return true;
 
