@@ -18,9 +18,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
         <activity
-            android:name="br.com.digitalhouse.modules.CadastroEmpresa.view.PreferenciaEmpresaActivity"
+            android:name=".modules.CadastroEmpresa.view.CadastroEmpresaActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
 
         <activity android:name=".activities.DetalheNoticia"></activity>
 
