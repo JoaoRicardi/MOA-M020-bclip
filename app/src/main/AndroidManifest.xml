@@ -16,8 +16,9 @@
         <activity
             android:name=".modules.CadastroUsuário.view.CadastroActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+
         <activity
-            android:name=".modules.CadastroEmpresa.view.CadastroEmpresaActivity"
+            android:name="br.com.digitalhouse.modules.CadastroEmpresa.view.PreferenciaEmpresaActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
 
 

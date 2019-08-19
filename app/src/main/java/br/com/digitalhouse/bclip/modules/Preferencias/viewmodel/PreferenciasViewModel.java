@@ -15,8 +15,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class PreferenciasViewModel extends AndroidViewModel {
+    public PreferenciasViewModel(@NonNull Application application) {
+        super(application);
+    }
 
-    private MutableLiveData<List<Preferencia>> listaPreferenciasLiveData = new MutableLiveData<List<Preferencia>>();
+    /*private MutableLiveData<List<Preferencia>> listaPreferenciasLiveData = new MutableLiveData<List<Preferencia>>();
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -32,6 +35,28 @@ public class PreferenciasViewModel extends AndroidViewModel {
         return listaPreferenciasLiveData;
     }
 
+<<<<<<< HEAD:app/src/main/java/br/com/digitalhouse/bclip/modules/Preferencias/viewmodel/PreferenciasViewModel.java
+=======
+    public void atualizarLista(){
+        disposable.add(
+                noticiasRepository.getListaPreferencias(getApplication())
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(listaComprasList -> {
+                            listaPreferenciasLiveData.setValue(listaComprasList);
+                        }, throwable -> throwable.printStackTrace())
+        );
+    }
+
+    public void inserirListaPreferencias(ListaPreferencias listaPreferencias){
+        disposable.add(
+                noticiasRepository.inserirListaPreferencias(listaPreferencias, getApplication())
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(() -> atualizarLista())
+        );
+    }/
+*/
 }
 
 //    public void atualizarLista(){

@@ -15,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.FragmentActionsListener;
-import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
+import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.modules.Noticias.view.NoticiasFragment;
 
 public class HomeActivity extends AppCompatActivity implements FragmentActionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case 0: Intent intent = new Intent(this, PreferenciaEmpresas.class);
+            case 0: Intent intent = new Intent(this, CadastroEmpresaActivity.class);
                 startActivity(intent);
 //            case 1: Intent intent1 = new Intent(this, PreferenciasActivity.class);
 //            startActivity(intent1);

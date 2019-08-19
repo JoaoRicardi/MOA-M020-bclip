@@ -1,6 +1,7 @@
 package br.com.digitalhouse.bclip.modules.Noticias.viewmodel;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -8,7 +9,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import br.com.digitalhouse.bclip.activities.HomeActivity;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
+import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 import br.com.digitalhouse.bclip.repository.NoticiasRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -28,7 +31,17 @@ public class NoticiaViewModel extends AndroidViewModel {
         return noticiaFromApiLiveData;
     }
 
-    public void atualizarNoticiasFromApi (String search) {
+    public void atualizarNoticiasFromApi (List<PreferenciaEmpresas> preferenciaEmpresasList) {
+        String search = new String();
+
+        for (int i = 0; i < preferenciaEmpresasList.size(); i++){
+            search += preferenciaEmpresasList.get(i).getPreferenciaEmpresa();
+            if(i < preferenciaEmpresasList.size() - 1){
+                search += " OR ";
+            }
+        }
+
+
         disposable.add(
                 noticiasRepository.getNoticiaFromApiList(search)
                 .observeOn(AndroidSchedulers.mainThread())

@@ -62,15 +62,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.0.0"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:2.0.0"
 
-
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-
 
     implementation 'com.google.firebase:firebase-core:17.0.1'
 
     implementation 'com.google.firebase:firebase-firestore:20.2.0'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
 
 
 

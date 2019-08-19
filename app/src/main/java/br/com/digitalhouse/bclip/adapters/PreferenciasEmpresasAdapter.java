@@ -14,37 +14,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.bclip.database.AppDatabase;
+import br.com.digitalhouse.bclip.interfaces.OnPreferenciaEmpresaListener;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 
 
-public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<PreferenciasEmpresasAdapter.ViewHolder>  {
+public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<PreferenciasEmpresasAdapter.ViewHolder> {
 
 
     private List<PreferenciaEmpresas> listaPreferenciaEmpresas = new ArrayList<>();
-
     private OnPreferenciaEmpresaListener onPreferenciaEmpresaListener;
 
-    private AppDatabase db;
 
 
-    public void atualizarPreferenciaEmpresa(List<PreferenciaEmpresas> listaPreferenciaEmpresas){
-        this.listaPreferenciaEmpresas = listaPreferenciaEmpresas;
-        notifyDataSetChanged();
-    }
-
-    public interface OnPreferenciaEmpresaListener {
-        void onPreferenciaLongClick(PreferenciaEmpresas preferenciaEmpresas);
-    }
-
-
-
-    public PreferenciasEmpresasAdapter(OnPreferenciaEmpresaListener onPreferenciaEmpresaListener){
+    //ok
+    public PreferenciasEmpresasAdapter(OnPreferenciaEmpresaListener onPreferenciaEmpresaListener) {
+        this.listaPreferenciaEmpresas= new ArrayList<>(); //incluido
         this.onPreferenciaEmpresaListener = onPreferenciaEmpresaListener;
     }
 
 
+    //ok
+    public void atualizarPreferenciaEmpresa(List<PreferenciaEmpresas> preferenciaEmpresaList) {
+        this.listaPreferenciaEmpresas = preferenciaEmpresaList;
+        notifyDataSetChanged();//avisa que houve alteraçao na lista (rx)
+    }
 
+
+    //ok
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -57,15 +53,22 @@ public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<Preferenci
         final PreferenciaEmpresas preferenciaEmpresas = listaPreferenciaEmpresas.get(i);
         viewHolder.setupPreferenciaEmpresa(preferenciaEmpresas);
 
-    }
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
 
+                onPreferenciaEmpresaListener.deletarEmpresa(preferenciaEmpresas);  // <<<<<----- deleta empresa
+
+                return false;
+            }
+        });
+    }
 
 
     @Override
     public int getItemCount() {
         return listaPreferenciaEmpresas.size();
     }
-
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -77,10 +80,6 @@ public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<Preferenci
         public ViewHolder(@NonNull View itemView, OnPreferenciaEmpresaListener onPreferenciaEmpresaListener) {
             super(itemView);
 
-
-
-
-
             btnPreferenciaEmpresas = itemView.findViewById(R.id.preferecia_empresas_button);
             this.onPreferenciaEmpresaListener = onPreferenciaEmpresaListener;
 
@@ -90,35 +89,28 @@ public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<Preferenci
                 @Override
                 public void onClick(View v) {
                     preferenciaEmpresas.setAtivado(!preferenciaEmpresas.getAtivado());
+                    if(preferenciaEmpresas.getAtivado()){
+                        Toast.makeText(v.getContext(), " Preferencia: " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Ativada", Toast.LENGTH_SHORT).show();
+                    } else{
+                        Toast.makeText(v.getContext(), " Preferencia " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Desativada!", Toast.LENGTH_SHORT).show();
+                    }
                     bind(v, preferenciaEmpresas);
                 }
             });
         }
 
         private void bind(View v, PreferenciaEmpresas preferenciaEmpresas) {
-
-
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-
-                    onPreferenciaEmpresaListener.onPreferenciaLongClick(preferenciaEmpresas);
-
-                    return true;
-                }
-            });
-
-
             if (preferenciaEmpresas.getAtivado()) {
 
                 Drawable icon = v.getContext().getResources().getDrawable(R.drawable.ic_check_black_24dp);
                 btnPreferenciaEmpresas.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
 
                 btnPreferenciaEmpresas.setText(preferenciaEmpresas.getPreferenciaEmpresa());
-                Toast.makeText(v.getContext(), " Preferencia: " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Ativada", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), " Preferencia: " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Ativada", Toast.LENGTH_SHORT).show();
 
                 int colorAtivado = v.getContext().getResources().getColor(R.color.verde);
                 btnPreferenciaEmpresas.setBackgroundColor(colorAtivado);
+
 
 
             } else {
@@ -130,33 +122,17 @@ public class PreferenciasEmpresasAdapter extends RecyclerView.Adapter<Preferenci
                 int colorDesativado = v.getContext().getResources().getColor(R.color.Selecionado);
                 btnPreferenciaEmpresas.setBackgroundColor(colorDesativado);
 
-                Toast.makeText(v.getContext(), " Preferencia " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Desativada!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), " Preferencia " + preferenciaEmpresas.getPreferenciaEmpresa()+ " Desativada!", Toast.LENGTH_SHORT).show();
             }
         }
 
 
-        public void setupPreferenciaEmpresa(PreferenciaEmpresas preferenciaEmpresas){
+        public void setupPreferenciaEmpresa(PreferenciaEmpresas preferenciaEmpresas) {
             btnPreferenciaEmpresas.setText(String.valueOf(preferenciaEmpresas.getPreferenciaEmpresa()));
             this.preferenciaEmpresas = preferenciaEmpresas;
 
             bind(btnPreferenciaEmpresas, preferenciaEmpresas);
         }
-
-
-//        public void deletarPreferenciaEmpresa(PreferenciaEmpresas preferenciaEmpresas){
-//                Completable.fromAction(() -> db.preferenciaEmpresasDao().delete(preferenciaEmpresas))
-//                        .subscribeOn(Schedulers.newThread())
-//                        .observeOn(AndroidSchedulers.mainThread())
-//                        .subscribeOn(Schedulers.newThread());
-//            }
-
-
-        }
-
-
-
-
-
-
+    }
 
 }

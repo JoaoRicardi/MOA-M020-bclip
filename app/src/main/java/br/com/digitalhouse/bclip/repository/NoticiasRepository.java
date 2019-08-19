@@ -19,18 +19,11 @@ public class NoticiasRepository {
     private static final String API_KEY = "dc960b3b301f488d82eacb012a7668ca";
     private static final String FORMAT = "json";
 
-    public Observable<List<NoticiaFromApi>> getNoticiaFromApiList (String search) {
+    public Observable<List<NoticiaFromApi>> getNoticiaFromApiList(String search) {
         return retrofitService.getNoticiasApi()
-                .getNoticiasFromApi(API_KEY,FORMAT, search)
+                .getNoticiasFromApi(API_KEY, FORMAT, search)
                 .map(noticiaFromApiResponse -> noticiaFromApiResponse.getArticles());
     }
-
-    //public Flowable<List<Preferencia>> getListaPreferencias(Context context) {
-    //    AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-    //    return db.()
-    //           .getAll();
-
-
-    }
+}
 
 
