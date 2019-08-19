@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="br.com.digitalhouse.modules.Cadastro.view.CadastroActivity">
+    tools:context=".modules.CadastroUsuário.view.CadastroActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,14 +55,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="usuário">
+                    android:hint="nome">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_usuario"
+                        android:id="@+id/nome_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -88,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:textColor="@color/colorPrimary"
-                        android:id="@+id/et_senha"/>
+                        android:id="@+id/senha_login_edit_text"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

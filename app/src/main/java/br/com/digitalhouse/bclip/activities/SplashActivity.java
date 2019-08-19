@@ -9,7 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.modules.Login.view.LoginActivity;
+import br.com.digitalhouse.bclip.modules.Login.view.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
