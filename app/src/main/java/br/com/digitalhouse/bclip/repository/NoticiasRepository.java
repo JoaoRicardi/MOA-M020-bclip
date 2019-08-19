@@ -25,12 +25,5 @@ public class NoticiasRepository {
                 .map(noticiaFromApiResponse -> noticiaFromApiResponse.getArticles());
     }
 
-    //public Flowable<List<Preferencia>> getListaPreferencias(Context context) {
-    //    AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-    //    return db.()
-    //           .getAll();
-
-
-    }
 
 }

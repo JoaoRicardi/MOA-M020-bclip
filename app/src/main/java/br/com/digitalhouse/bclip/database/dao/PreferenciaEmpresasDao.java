@@ -19,14 +19,12 @@ public interface PreferenciaEmpresasDao {
     Flowable<List<PreferenciaEmpresas>> getAll();
 
     @Insert
-    void inserir(PreferenciaEmpresas preferenciaEmpresas);
+    void insert(PreferenciaEmpresas preferenciaEmpresas);
 
     @Delete
     void delete(PreferenciaEmpresas preferenciaEmpresas);
 
     @Update
     void update(PreferenciaEmpresas preferenciaEmpresas);
-
-
 
 }

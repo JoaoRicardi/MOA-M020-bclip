@@ -15,8 +15,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class PreferenciasViewModel extends AndroidViewModel {
+    public PreferenciasViewModel(@NonNull Application application) {
+        super(application);
+    }
 
-    private MutableLiveData<List<Preferencia>> listaPreferenciasLiveData = new MutableLiveData<List<Preferencia>>();
+    /*private MutableLiveData<List<Preferencia>> listaPreferenciasLiveData = new MutableLiveData<List<Preferencia>>();
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -50,6 +53,6 @@ public class PreferenciasViewModel extends AndroidViewModel {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(() -> atualizarLista())
         );
-    }
-
+    }/
+*/
 }

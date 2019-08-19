@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
+import br.com.digitalhouse.modules.CadastroEmpresa.view.PreferenciaEmpresaActivity;
 import br.com.digitalhouse.bclip.adapters.PreferenciasAdapter;
 import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.modules.Preferencias.viewmodel.PreferenciasViewModel;
@@ -66,7 +66,7 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
 
     private void botaoClicado() {
 
-        Intent intent = new Intent(this, CadastroEmpresaActivity.class);
+        Intent intent = new Intent(this, PreferenciaEmpresaActivity.class);
 
         startActivity(intent);
 

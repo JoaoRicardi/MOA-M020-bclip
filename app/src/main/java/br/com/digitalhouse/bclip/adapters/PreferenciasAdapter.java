@@ -92,7 +92,7 @@ public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapte
                 Drawable icon = v.getContext().getResources().getDrawable(R.drawable.ic_check_black_24dp);
                 btnPreferencia.setCompoundDrawablesWithIntrinsicBounds(null, null, icon, null);
 
-                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Ativada", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Ativada", Toast.LENGTH_SHORT).show();
 
                 int colorAtivado = v.getContext().getResources().getColor(R.color.verde);
                 btnPreferencia.setBackgroundColor(colorAtivado);
@@ -106,7 +106,7 @@ public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapte
                 int colorDesativado = v.getContext().getResources().getColor(R.color.Selecionado);
                 btnPreferencia.setBackgroundColor(colorDesativado);
 
-                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Desativada!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(v.getContext(), " Preferencia " + preferencia.getPreferencia()+ " Desativada!", Toast.LENGTH_SHORT).show();
             }
         }
 
