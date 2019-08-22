@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
-import br.com.digitalhouse.bclip.adapter.NoticiaAdapter;
+import br.com.digitalhouse.bclip.adapters.NoticiaAdapter;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
 

@@ -7,11 +7,24 @@ import java.io.Serializable;
 public class NoticiaFromApi implements Serializable {
 
     private String title;
+<<<<<<< HEAD
 
     @SerializedName("source")
     private Source name;
+=======
+    private Source source;
+    private String description;
+>>>>>>> 5aff50376c8eaa35c9c1666b7c23f740f926101b
     private String urlToImage;
     private String url;
+
+    public Source getSource() {
+        return source;
+    }
+
+    public void setSource(Source source) {
+        this.source = source;
+    }
 
     public String getUrl() {
         return url;

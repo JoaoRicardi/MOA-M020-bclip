@@ -1,20 +1,22 @@
 package br.com.digitalhouse.bclip.activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.FragmentActionsListener;
+import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
+import br.com.digitalhouse.bclip.modules.Noticias.view.NoticiasFragment;
 
 public class HomeActivity extends AppCompatActivity implements FragmentActionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -24,8 +26,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
 
         substituirFragment(new NoticiasFragment());
 
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case 0: Intent intent = new Intent(this, PreferenciasActivity.class);
+            case 0: Intent intent = new Intent(this, CadastroEmpresaActivity.class);
                 startActivity(intent);
 //            case 1: Intent intent1 = new Intent(this, PreferenciasActivity.class);
 //            startActivity(intent1);

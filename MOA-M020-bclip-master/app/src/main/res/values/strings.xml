@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Bclip</string>
+
+    <string name="texto_preferencias">Selecione os campos de atuação do seu interesse e receba sempre as notícias mais importantes para você e sua Empresa.</string>
+    <string name="texto_cadastro_empresas">inserindo o nome da empresa e dos seus concorrentes você recebe um clipping sobre o mercado que sua empresa atua.</string>
+
+
+    <string name="login">login</string>
+    <string name="usuario">usuário</string>
+    <string name="esqueceu_a_senha">esqueceu a senha?</string>
+    <string name="ok">OK</string>
+    <string name="criar_nova_conta">criar nova conta</string>
+    <string name="senha">senha</string>
+    <string name="email">e-mail</string>
+    <string name="digite_seu_email_cadastrado">digite seu email cadastrado.</string>
+    <string name="faca_cadastro">faça seu cadastro, é rápido e você</string>
+    <string name="confirma_senha">confirme sua senha</string>
+    <string name="empresa">sua empresa</string>
+    <string name="adicionar_concorrente">adicionar concorrente</string>
+    <string name="nome_concorrente">Nome do Concorrente</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="salvar_preferencias">salvar preferencias</string>
+    <string name="preferencia">preferencia</string>
+    <string name="home">Home</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="buscar">Buscar</string>
+    <string name="bucar">          bucar</string>
+
+
+</resources>

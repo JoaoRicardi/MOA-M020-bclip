@@ -1,5 +1,14 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name"> Bclip.</string>
+=======
+    <string name="app_name">Bclip</string>
+
+    <string name="texto_preferencias">Selecione os campos de atuação do seu interesse e receba sempre as notícias mais importantes para você e sua Empresa.</string>
+    <string name="texto_cadastro_empresas">inserindo o nome da empresa e dos seus concorrentes você recebe um clipping sobre o mercado que sua empresa atua.</string>
+
+
+>>>>>>> 5aff50376c8eaa35c9c1666b7c23f740f926101b
     <string name="login">login</string>
     <string name="usuario">usuário</string>
     <string name="esqueceu_a_senha">esqueceu a senha?</string>
@@ -22,4 +31,10 @@
     <string name="favoritos">Favoritos</string>
     <string name="buscar">Buscar</string>
     <string name="bucar">          bucar</string>
+<<<<<<< HEAD
 </resources>
+=======
+
+
+</resources>
+>>>>>>> 5aff50376c8eaa35c9c1666b7c23f740f926101b
