@@ -12,6 +12,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,9 @@ public class FirebaseRepository {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private static final String TAG = "FirebaseRepository";
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser firebaseUser;
 
     public Completable autenticar(String email, String senha){
         return Completable.create(emitter -> {
@@ -80,5 +84,6 @@ public class FirebaseRepository {
                     });
         });
     }
+
 
 }

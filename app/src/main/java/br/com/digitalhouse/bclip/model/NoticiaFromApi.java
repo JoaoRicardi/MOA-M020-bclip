@@ -9,6 +9,15 @@ public class NoticiaFromApi implements Serializable {
     private String description;
     private String urlToImage;
     private String url;
+    private String publishedAt;
+
+    public String getPublishedAt() {
+        return publishedAt;
+    }
+
+    public void setPublishedAt(String publishedAt) {
+        this.publishedAt = publishedAt;
+    }
 
     public Source getSource() {
         return source;
