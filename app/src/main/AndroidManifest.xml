@@ -8,11 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/icone_app_01"
-<<<<<<< HEAD
-        android:label="@string/app_name"
-=======
         android:label="bclip"
->>>>>>> 5aff50376c8eaa35c9c1666b7c23f740f926101b
         android:roundIcon="@drawable/icone_app_rounded"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

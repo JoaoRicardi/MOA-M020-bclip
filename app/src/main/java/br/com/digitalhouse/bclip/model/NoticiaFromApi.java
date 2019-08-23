@@ -1,22 +1,23 @@
 package br.com.digitalhouse.bclip.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class NoticiaFromApi implements Serializable {
 
     private String title;
-<<<<<<< HEAD
-
-    @SerializedName("source")
-    private Source name;
-=======
     private Source source;
     private String description;
->>>>>>> 5aff50376c8eaa35c9c1666b7c23f740f926101b
     private String urlToImage;
     private String url;
+    private String publishedAt;
+
+    public String getPublishedAt() {
+        return publishedAt;
+    }
+
+    public void setPublishedAt(String publishedAt) {
+        this.publishedAt = publishedAt;
+    }
 
     public Source getSource() {
         return source;
@@ -50,11 +51,11 @@ public class NoticiaFromApi implements Serializable {
         this.title = title;
     }
 
-    public Source getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(Source name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

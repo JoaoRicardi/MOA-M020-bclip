@@ -1,5 +1,6 @@
 package br.com.digitalhouse.bclip.adapters;
 
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,6 +25,12 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
     private List<NoticiaFromApi> listaNoticias = new ArrayList<>();
     private NoticiaListener noticiaListerner;
+    private FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
+    private FirebaseUser firebaseUser;
+
+
+    private static final String TAG = "NoticiaFragment";
+
 
 
     public NoticiaAdapter(List<NoticiaFromApi> listaNoticias, NoticiaListener noticiaListener){
@@ -38,7 +47,7 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.celula_feed, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.celula_noticia, parent, false);
         return new ViewHolder(view);
     }
 
@@ -65,7 +74,9 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
         private ImageView imagemNoticia;
         private TextView tituloNoticia;
-        private TextView fonteNoticia;
+        private TextView descricaoNoticia;
+        private ImageView compartilharNoticiaButton;
+        private ImageView salvarNoticiaButton;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,21 +84,33 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
 
             imagemNoticia = itemView.findViewById(R.id.noticia_imagem_image_view);
             tituloNoticia = itemView.findViewById(R.id.noticia_titulo_text_view);
-            fonteNoticia = itemView.findViewById(R.id.noticia_fonte_text_view);
-        }
-
-        public void bindNoticia(NoticiaFromApi noticiaFromApi) {
-            tituloNoticia.setText(noticiaFromApi.getTitle());
-            fonteNoticia.setText(noticiaFromApi.getName().getFontName());
-=======
             descricaoNoticia = itemView.findViewById(R.id.noticia_fonte_text_view);
+            compartilharNoticiaButton = itemView.findViewById(R.id.compartilhar_noticia_btn);
+            salvarNoticiaButton = itemView.findViewById(R.id.salvar_noticia_btn);
         }
 
         public void bindNoticia(NoticiaFromApi noticiaFromApi) {
             tituloNoticia.setText((noticiaFromApi.getTitle()));
             descricaoNoticia.setText(noticiaFromApi.getSource().getName());
-
             Picasso.get().load(noticiaFromApi.getUrlToImage()).into(imagemNoticia);
+
+            // if (favorito)
+            salvarNoticiaButton.setColorFilter(R.color.verde, PorterDuff.Mode.SRC_ATOP);
+            //else
+//            salvarNoticiaButton.setColorFilter(R.color.preto, PorterDuff.Mode.SRC_ATOP);
+
+            salvarNoticiaButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // if (!favorito)
+                    noticiaListerner.salvarFavoritosFirebase(noticiaFromApi);
+                    // else -> deletar do firebase
+                    //   noticiaListerner.deletarFavoritoFirebase(noticiaFromApi);
+                }
+            });
         }
+
+
+
     }
 }

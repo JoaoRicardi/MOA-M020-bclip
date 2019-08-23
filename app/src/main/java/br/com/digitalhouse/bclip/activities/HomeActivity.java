@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.FragmentActionsListener;
@@ -21,6 +22,8 @@ import br.com.digitalhouse.bclip.modules.Noticias.view.NoticiasFragment;
 public class HomeActivity extends AppCompatActivity implements FragmentActionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +71,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
         MenuItem menuItem = menu.add(0, 0, 0, "Preferências");
         menuItem.setShowAsAction(menuItem.SHOW_AS_ACTION_NEVER);
 
-//        MenuItem menuItem2 = menu.add(0, 0, 0, "Preferências");
-//        menuItem.setShowAsAction(menuItem2.SHOW_AS_ACTION_NEVER);
 
 
         return true;
@@ -80,8 +81,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
         switch (item.getItemId()){
             case 0: Intent intent = new Intent(this, CadastroEmpresaActivity.class);
                 startActivity(intent);
-//            case 1: Intent intent1 = new Intent(this, PreferenciasActivity.class);
-//            startActivity(intent1);
                 break;
         } return true;
     }

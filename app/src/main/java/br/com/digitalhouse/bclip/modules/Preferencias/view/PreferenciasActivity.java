@@ -91,7 +91,7 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
         Preferencia preferencia5 = new Preferencia("Varejo", true);
         preferenciaList.add(preferencia5);
 
-        Preferencia preferencia6 = new Preferencia("Markeing", false);
+        Preferencia preferencia6 = new Preferencia("Marketing", false);
         preferenciaList.add(preferencia6);
 
         Preferencia preferencia7 = new Preferencia("Esporte", true);

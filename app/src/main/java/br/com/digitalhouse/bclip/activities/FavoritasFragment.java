@@ -1,104 +1,120 @@
 package br.com.digitalhouse.bclip.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.adapters.FavoritasAdapter;
 import br.com.digitalhouse.bclip.adapters.NoticiaAdapter;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
+import br.com.digitalhouse.bclip.model.Source;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FavoritasFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private FavoritasAdapter favoritasAdapter;
+    private FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
+    private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    private static final String TAG = "FavoritaFragment";
+
+
 
     public FavoritasFragment() {
-        // Required empty public constructor
+
     }
 
-    private NoticiaListener noticiaListerner;
 
 
-    /*@Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
+        View view = inflater.inflate(R.layout.fragment_favoritas, container, false);
 
-        List<Noticia> noticiaList = getListaNoticia();
-        ArrayList<NoticiaFromApi> noticiaFromApiArrayList = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.favoritas_recycler_view_id);
 
-        NoticiaAdapter noticiaAdapter = new NoticiaAdapter(noticiaFromApiArrayList, noticiaListerner);
+        ArrayList<NoticiaFromApi> noticiaFavoritaList = new ArrayList<>();
+
+        favoritasAdapter = new FavoritasAdapter(noticiaFavoritaList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-        RecyclerView recyclerView = view.findViewById(R.id.noticias_recycler_id);
-
-        recyclerView.setAdapter(noticiaAdapter);
+        recyclerView.setAdapter(favoritasAdapter);
         recyclerView.setLayoutManager(layoutManager);
+
+        buscarDadosFirebase();
+
+
 
 
         return view;
     }
 
-    private List<Noticia> getListaNoticia() {
-        List<Noticia> noticiaList = new ArrayList<>();
+
+    private void buscarDadosFirebase() {
+        firebaseDb.collection("usuario")
+                .document(firebaseUser.getUid())
+                .collection("noticias favoritas")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
 
 
+                            List<NoticiaFromApi> noticiaFromApiList = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
 
-        Noticia noticia1 = new Noticia();
-        noticia1.setTituloMateria("Inteligência Artificial e Geolocalização \nintegram nova tecnologia ...");
-        noticia1.setFonteMateria("A Startup se destacou no mercado nacional por ser \numa plataforma onde é possível encontrar as lojas \nde moveis planejados mais próximas ...");
-        noticia1.setFotoMateria(R.drawable.img_tech5);
-        noticiaList.add(noticia1);
+                                Log.d(TAG, document.getId() + "=>" + document.getData());
 
-        Noticia noticia2 = new Noticia();
-        noticia2.setTituloMateria("Grandes empresas propõem desafios reais para as startups mais atrativas do mercado");
-        noticia2.setFonteMateria("Para a multinacional Basf, o uso de moedas virtuais vai ajudar a agregar mais valor aos parceiros da empresa e atrair novos players para a cadeia da indústria química. ...");
-        noticia2.setFotoMateria(R.drawable.img_tech4);
-        noticiaList.add(noticia2);
+                                NoticiaFromApi noticiaFromApi = new NoticiaFromApi();
 
-        Noticia noticia3 = new Noticia();
-        noticia3.setTituloMateria("Mutant lança projeto para conectar startups às principais empresas do Brasil");
-        noticia3.setFonteMateria("Inscrições poderão ser feitas até o dia 26 de julho e um comitê ficará responsável pela aprovação dos parceiros");
-        noticia3.setFotoMateria(R.drawable.img_tech);
-        noticiaList.add(noticia3);
+                                noticiaFromApi.setTitle((String) document.getData().get("title"));
+                                Source source = new Source();
+                                source.setName((String) document.getData().get("source"));
+                                noticiaFromApi.setSource(source);
+                                noticiaFromApi.setDescription((String) document.getData().get("description"));
+                                noticiaFromApi.setUrlToImage((String) document.getData().get("urlToImage"));
+                                noticiaFromApi.setUrl((String) document.getData().get("url"));
 
-        Noticia noticia4 = new Noticia();
-        noticia4.setTituloMateria("Startup brasileira de ‘carne de planta’ recebe investimento de US$ 8,5 mi");
-        noticia4.setFonteMateria("Fundo brasileiro Monashees, que alavancou 99, Loggi e Rappi, entra com capital na Fazenda Futuro, empresa que está há apenas três meses no mercado");
-        noticia4.setFotoMateria(R.drawable.img_tech2);
-        noticiaList.add(noticia4);
+                                noticiaFromApiList.add(noticiaFromApi);
+                                favoritasAdapter.atualizarFavoritas(noticiaFromApiList);
 
-        Noticia noticia5 = new Noticia();
-        noticia5.setTituloMateria("Google ajuda a transformar sua startup em um grande negócio");
-        noticia5.setFonteMateria("Inscrições para o programa de aceleração do Google estão abertas até 9 de agosto\n");
-        noticia5.setFotoMateria(R.drawable.img_tech3);
-        noticiaList.add(noticia5);
+                            }
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
 
 
+                });
 
+    }
 
-
-
-
-
-
-
-
-
-        return noticiaList;
-    }*/
 
 
 }
