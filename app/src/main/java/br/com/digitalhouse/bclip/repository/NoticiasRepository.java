@@ -16,12 +16,14 @@ import io.reactivex.Observable;
 public class NoticiasRepository {
 
     private RetrofitService retrofitService = new RetrofitService();
-    private static final String API_KEY = "dc960b3b301f488d82eacb012a7668ca";
+    private static final String API_KEY = "2af0470fc1404d868a96ee30adfeecbe";
     private static final String FORMAT = "json";
+    private static final int PAGESIZE = 50;
+    private static final String SORTBY = "relevancy";
 
     public Observable<List<NoticiaFromApi>> getNoticiaFromApiList(String search) {
         return retrofitService.getNoticiasApi()
-                .getNoticiasFromApi(API_KEY, FORMAT, search)
+                .getNoticiasFromApi(API_KEY, FORMAT, search, PAGESIZE, SORTBY)
                 .map(noticiaFromApiResponse -> noticiaFromApiResponse.getArticles());
     }
 }
