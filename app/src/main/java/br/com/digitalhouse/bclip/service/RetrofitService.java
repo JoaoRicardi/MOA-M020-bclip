@@ -3,6 +3,7 @@ package br.com.digitalhouse.bclip.service;
 import java.util.concurrent.TimeUnit;
 
 import br.com.digitalhouse.bclip.service.api.NoticiasApi;
+import br.com.digitalhouse.bclip.service.api.NoticiasApiPreferencias;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -33,5 +34,12 @@ public class RetrofitService {
 
     public NoticiasApi getNoticiasApi () {
         return getRetrofit().create(NoticiasApi.class);
+    }
+
+
+    // criando pagina 2 de noticias
+
+    public NoticiasApiPreferencias getNoticiasApiPreferencias () {
+        return getRetrofit().create(NoticiasApiPreferencias.class);
     }
 }

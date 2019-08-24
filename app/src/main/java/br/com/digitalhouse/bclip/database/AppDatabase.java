@@ -3,6 +3,7 @@ package br.com.digitalhouse.bclip.database;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
+
 import br.com.digitalhouse.bclip.database.dao.PreferenciaEmpresasDao;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 

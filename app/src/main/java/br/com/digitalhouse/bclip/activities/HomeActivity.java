@@ -18,6 +18,7 @@ import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.FragmentActionsListener;
 import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.modules.Noticias.view.NoticiasFragment;
+import br.com.digitalhouse.bclip.modules.NoticiasPreferencias.view.NoticiasPreferenciaFragment;
 
 public class HomeActivity extends AppCompatActivity implements FragmentActionsListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
             substituirFragment(new FavoritasFragment());
 
         } else if (id == R.id.buscar_bottom_id){
-            substituirFragment(new BuscarFragment());
+            substituirFragment(new NoticiasPreferenciaFragment());
         }
 
 

@@ -10,10 +10,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.interfaces.OnPreferenciaEmpresaListener;
 import br.com.digitalhouse.bclip.model.Preferencia;
+import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 
 
 public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapter.ViewHolder>  {
@@ -31,15 +34,16 @@ public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapte
 
 
 
-
-    public PreferenciasAdapter(List<Preferencia> listaPreferencias, OnPreferenciaListener onPreferenciaListener){
-        this.listaPreferencias = listaPreferencias;
+    public PreferenciasAdapter(OnPreferenciaListener onPreferenciaListener){
+        this.listaPreferencias = new ArrayList<>();
         this.onPreferenciaListener = onPreferenciaListener;
-
-
     }
 
-
+    //ok
+    public void atualizarPreferencia(List<Preferencia> preferenciaList) {
+        this.listaPreferencias = preferenciaList;
+        notifyDataSetChanged();//avisa que houve alteraçao na lista (rx)
+    }
 
     @NonNull
     @Override

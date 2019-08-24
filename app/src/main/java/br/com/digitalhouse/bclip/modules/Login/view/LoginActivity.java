@@ -34,6 +34,7 @@ import br.com.digitalhouse.bclip.modules.CadastroUsuário.view.CadastroActivity;
 import br.com.digitalhouse.bclip.activities.HomeActivity;
 import br.com.digitalhouse.bclip.activities.RecuperarSenhaActivity;
 import br.com.digitalhouse.bclip.modules.Login.viewmodel.LoginViewModel;
+import br.com.digitalhouse.bclip.modules.Preferencias.view.PreferenciasActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -125,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void irParaPreferencias() {
-        Intent intent = new Intent(this, CadastroEmpresaActivity.class);
+        Intent intent = new Intent(this, PreferenciasActivity.class);
         startActivity(intent);
     }
 
@@ -158,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
 
-                Intent intent = new Intent(LoginActivity.this, CadastroEmpresaActivity.class);
+                Intent intent = new Intent(LoginActivity.this, PreferenciasActivity.class);
                 startActivity(intent); ///// tentando trocar de activity
 
             } catch (ApiException e) {

@@ -13,10 +13,4 @@ public interface NoticiasApi {
                                                            @Query("q") String search,
                                                            @Query("pageSize") int pageSize,
                                                            @Query("sortBy")String sortBy);
-
-
-
-
-
-
 }

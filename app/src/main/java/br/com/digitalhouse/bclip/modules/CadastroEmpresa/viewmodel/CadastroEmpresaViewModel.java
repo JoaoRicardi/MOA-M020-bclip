@@ -19,19 +19,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CadastroEmpresaViewModel extends AndroidViewModel {
 
+
     private  MutableLiveData<List<PreferenciaEmpresas>> listPreferenciasEmpresaLiveData = new MutableLiveData<>();
-
     private MutableLiveData<PreferenciaEmpresas> preferenciaEmpresasMutableLiveData = new MutableLiveData<>();
-
     private CompositeDisposable disposable = new CompositeDisposable();
-    //    private AppDatabase db;
     private PreferenciaEmpresaRepository repository= new PreferenciaEmpresaRepository();
-
-
-//    private PreferenciasEmpresasAdapter.OnPreferenciaEmpresaListener onPreferenciaEmpresaListener;
-
-
-
 
 
     public CadastroEmpresaViewModel(@NonNull Application application) {
@@ -40,12 +32,6 @@ public class CadastroEmpresaViewModel extends AndroidViewModel {
     public MutableLiveData<List<PreferenciaEmpresas>> getListPreferenciasEmpresa() {
         return listPreferenciasEmpresaLiveData;
     }
-//    public MutableLiveData<PreferenciaEmpresas> getPreferenciaEmpresasLiveData(){
-//        return preferenciaEmpresasMutableLiveData;
-//    }
-
-    //List<PreferenciaEmpresas> preferenciaEmpresasList = db.preferenciaEmpresasDao().getAll();
-
 
 
     public void inserirPreferenciasEmpresa(PreferenciaEmpresas preferenciaEmpresas){
@@ -65,7 +51,7 @@ public class CadastroEmpresaViewModel extends AndroidViewModel {
                         .subscribe(()->preferenciaEmpresasMutableLiveData.setValue(preferenciaEmpresas))
         );
     }
-    /// null pointer corrigir
+
     public void updatePreferenciaEmpresa(PreferenciaEmpresas preferenciaEmpresas) {
         disposable.add(
                 repository.updatePreferenciaEmpresa(getApplication(), preferenciaEmpresas)
