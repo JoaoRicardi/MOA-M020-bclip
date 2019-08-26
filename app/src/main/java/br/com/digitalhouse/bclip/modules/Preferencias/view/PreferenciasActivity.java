@@ -17,19 +17,23 @@ import java.util.List;
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.adapters.PreferenciasAdapter;
 import br.com.digitalhouse.bclip.adapters.PreferenciasEmpresasAdapter;
+import br.com.digitalhouse.bclip.database.AppDatabasePreferencia;
 import br.com.digitalhouse.bclip.interfaces.OnPreferenciaEmpresaListener;
+import br.com.digitalhouse.bclip.interfaces.OnPreferenciaListener;
 import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.modules.CadastroEmpresa.viewmodel.CadastroEmpresaViewModel;
 import br.com.digitalhouse.bclip.modules.Preferencias.viewmodel.PreferenciasViewModel;
 
-public class PreferenciasActivity extends AppCompatActivity implements PreferenciasAdapter.OnPreferenciaListener {
+public class PreferenciasActivity extends AppCompatActivity implements OnPreferenciaListener {
 
 
     private RecyclerView recyclerView;
     private Button btnSalvarPreferencias;
     private PreferenciasViewModel viewModel;
     private PreferenciasAdapter preferenciasAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +44,12 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
         viewModel = ViewModelProviders.of(this).get(PreferenciasViewModel.class);
         viewModel.getListaPreferencia();
 
-        viewModel.getListaPreferencia()
+        viewModel.getListaPreferenciaLiveData()
                 .observe(this, listaPreferencia -> {
                     preferenciasAdapter.atualizarPreferencia(listaPreferencia);
                 });
+
+
 
         preferenciasAdapter = new PreferenciasAdapter( this);
         setupRecyclerView(); // verificar melhor ordem para gerar o recyclerview
@@ -77,41 +83,18 @@ public class PreferenciasActivity extends AppCompatActivity implements Preferenc
 
     }
 
-    private List<Preferencia> getListaPreferencias() {
-
-        List<Preferencia> preferenciaList = new ArrayList<>();
-
-        Preferencia preferencia1 = new Preferencia(01,"business", false);
-        preferenciaList.add(preferencia1);
-
-        Preferencia preferencia2 = new Preferencia(02,"technology", false);
-        preferenciaList.add(preferencia2);
-
-        Preferencia preferencia3 = new Preferencia(03,"health", false);
-        preferenciaList.add(preferencia3);
-
-        Preferencia preferencia4 = new Preferencia(04,"science", true);
-        preferenciaList.add(preferencia4);
-
-        Preferencia preferencia5 = new Preferencia(05,"sports", false);
-        preferenciaList.add(preferencia5);
-
-        Preferencia preferencia6 = new Preferencia(06,"entertainment", false);
-        preferenciaList.add(preferencia6);
-
-        Preferencia preferencia7 = new Preferencia(07,"general", true);
-        preferenciaList.add(preferencia7);
-
-        return preferenciaList;
-
-    }
-
     @Override
     public void onPreferenciaClick(int position) {
 
-        Toast.makeText(this, "A opção  " + getListaPreferencias().get(position).getPreferencia() + " foi selecionada!", Toast.LENGTH_SHORT).show();
-
-
     }
+
+
+//    @Override
+//    public void onPreferenciaClick(int position) {
+//
+//        Toast.makeText(this, "A opção  " + db.preferenciasDao() + " foi selecionada!", Toast.LENGTH_SHORT).show();
+//
+//
+//    }
 }
 

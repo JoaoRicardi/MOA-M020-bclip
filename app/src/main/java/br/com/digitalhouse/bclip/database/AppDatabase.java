@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase;
 import br.com.digitalhouse.bclip.database.dao.PreferenciaEmpresasDao;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 
+
 @Database(entities = {PreferenciaEmpresas.class}, version = 1)
 
 public abstract class AppDatabase extends RoomDatabase {

@@ -22,12 +22,12 @@ public class PreferenciaRepository {
        return db.preferenciasDao().getAll();
    }
 
-//   public Completable inserirPreferencia(Context context, Preferencia preferencia){
-//       AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-//       return Completable.fromAction(()->db.preferenciasDao().insert(preferencia))
-//               .observeOn(AndroidSchedulers.mainThread())
-//               .subscribeOn(Schedulers.newThread());
-//   }
+   public Completable inserirPreferencia(Context context, Preferencia preferencia){
+       AppDatabasePreferencia db = Room.databaseBuilder(context, AppDatabasePreferencia.class, AppDatabasePreferencia.DATABASE_NAME).build();
+       return Completable.fromAction(()->db.preferenciasDao().insert(preferencia))
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribeOn(Schedulers.newThread());
+   }
 //
 //    public Completable deletarPreferencia(Context context, Preferencia preferencia){
 //        AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();

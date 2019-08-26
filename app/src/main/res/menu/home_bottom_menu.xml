@@ -12,8 +12,7 @@
 
 
     <item android:id="@+id/buscar_bottom_id"
-        android:title="@string/buscar"
+        android:title="Segmentos"
         android:icon="@drawable/ic_bottom_buscar"/>
-
 
 </menu>

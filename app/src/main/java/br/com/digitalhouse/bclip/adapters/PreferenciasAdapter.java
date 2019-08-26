@@ -15,6 +15,7 @@ import java.util.List;
 
 import br.com.digitalhouse.bclip.R;
 import br.com.digitalhouse.bclip.interfaces.OnPreferenciaEmpresaListener;
+import br.com.digitalhouse.bclip.interfaces.OnPreferenciaListener;
 import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 
@@ -22,15 +23,9 @@ import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 public class PreferenciasAdapter extends RecyclerView.Adapter<PreferenciasAdapter.ViewHolder>  {
 
 
-    private List<Preferencia> listaPreferencias;
-
+    private List<Preferencia> listaPreferencias=new ArrayList<>();
     private OnPreferenciaListener onPreferenciaListener;
 
-
-
-    public interface OnPreferenciaListener{
-        void onPreferenciaClick(int position);
-    }
 
 
 

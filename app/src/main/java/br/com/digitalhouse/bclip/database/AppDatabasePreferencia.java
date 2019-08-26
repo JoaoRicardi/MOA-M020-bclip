@@ -16,6 +16,9 @@ public abstract class AppDatabasePreferencia extends RoomDatabase {
 
     public abstract PreferenciaDao preferenciasDao();
 
+
+
+
 }
 
 

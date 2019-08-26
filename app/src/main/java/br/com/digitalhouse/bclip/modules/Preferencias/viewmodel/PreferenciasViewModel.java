@@ -20,13 +20,32 @@ public class PreferenciasViewModel extends AndroidViewModel {
 
 
     private MutableLiveData<List<Preferencia>> listaPreferenciaLiveData = new MutableLiveData<>();
+    private MutableLiveData<Preferencia> preferenciaMutableLiveData = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private PreferenciaRepository repository= new PreferenciaRepository();
 
 
     public PreferenciasViewModel(@NonNull Application application) { super(application); }
-    public MutableLiveData<List<Preferencia>> getListaPreferencia() {
+    public MutableLiveData<List<Preferencia>> getListaPreferenciaLiveData() {
         return listaPreferenciaLiveData;
     }
 
+    public void inserirPreferencias(Preferencia preferencia){
+        disposable.add(
+                repository.inserirPreferencia(getApplication(), preferencia)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(()->preferenciaMutableLiveData.setValue(preferencia))
+        );
+    }
+
+    public void getListaPreferencia() {
+        disposable.add(
+                repository.getListaPreferencia(getApplication())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.newThread())
+                        .subscribe(preferencia->listaPreferenciaLiveData.setValue(preferencia))
+        );
+
+    }
 }
