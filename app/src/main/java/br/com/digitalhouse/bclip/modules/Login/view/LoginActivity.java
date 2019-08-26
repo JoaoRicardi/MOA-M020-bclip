@@ -29,12 +29,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.modules.CadastroUsuário.view.CadastroActivity;
 import br.com.digitalhouse.bclip.activities.HomeActivity;
 import br.com.digitalhouse.bclip.activities.RecuperarSenhaActivity;
 import br.com.digitalhouse.bclip.modules.Login.viewmodel.LoginViewModel;
 import br.com.digitalhouse.bclip.modules.Preferencias.view.PreferenciasActivity;
+import br.com.digitalhouse.bclip.modules.Preferencias.viewmodel.PreferenciasViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -114,6 +116,24 @@ public class LoginActivity extends AppCompatActivity {
                 irParaCadastro();
             }
         });
+
+        PreferenciasViewModel viewModel = ViewModelProviders.of(this).get(PreferenciasViewModel.class);
+
+        Preferencia preferencia1 = new Preferencia(01,"Negócios", false);
+        Preferencia preferencia2 = new Preferencia(02,"Tecnologia", false);
+        Preferencia preferencia3 = new Preferencia(03,"Saúde", false);
+        Preferencia preferencia4 = new Preferencia(04,"Ciência", false);
+        Preferencia preferencia5 = new Preferencia(05,"Esportes", false);
+        Preferencia preferencia6 = new Preferencia(06,"Entretenimento", false);
+        Preferencia preferencia7 = new Preferencia(07,"Geral", true);
+
+        viewModel.inserirPreferencias(preferencia1);
+        viewModel.inserirPreferencias(preferencia2);
+        viewModel.inserirPreferencias(preferencia3);
+        viewModel.inserirPreferencias(preferencia4);
+        viewModel.inserirPreferencias(preferencia5);
+        viewModel.inserirPreferencias(preferencia6);
+        viewModel.inserirPreferencias(preferencia7);
     }
 
     private void logar() {
