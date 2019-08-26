@@ -12,5 +12,7 @@ public interface NoticiasApi {
                                                            @Query("format") String format,
                                                            @Query("q") String search,
                                                            @Query("pageSize") int pageSize,
-                                                           @Query("sortBy")String sortBy);
+                                                           @Query("sortBy")String sortBy,
+                                                           @Query("source") String source,
+                                                           @Query("language") String language);
 }

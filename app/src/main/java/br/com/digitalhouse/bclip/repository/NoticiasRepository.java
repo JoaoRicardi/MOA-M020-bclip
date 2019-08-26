@@ -22,10 +22,12 @@ public class NoticiasRepository {
     private static final String CATEGORY = "science";
     private static final String SORTBY = "relevancy";
     private static final String COUNTRY = "br";
+    private static final String SOURCE_GOOGLE = "google-news-br";
+    private static final String LANGUAGE = "pt";
 
     public Observable<List<NoticiaFromApi>> getNoticiaFromApiList(String search) {
         return retrofitService.getNoticiasApi()
-                .getNoticiasFromApi(API_KEY, FORMAT, search, PAGESIZE, SORTBY)
+                .getNoticiasFromApi(API_KEY, FORMAT, search, PAGESIZE, SORTBY, SOURCE_GOOGLE, LANGUAGE)
                 .map(noticiaFromApiResponse -> noticiaFromApiResponse.getArticles());
     }
 
