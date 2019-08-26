@@ -1,6 +1,8 @@
 package br.com.digitalhouse.bclip.modules.Login.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import br.com.digitalhouse.bclip.R;
+import br.com.digitalhouse.bclip.constantes.Constantes;
 import br.com.digitalhouse.bclip.modules.CadastroEmpresa.view.CadastroEmpresaActivity;
 import br.com.digitalhouse.bclip.modules.CadastroUsuário.view.CadastroActivity;
 import br.com.digitalhouse.bclip.activities.HomeActivity;
@@ -65,6 +68,12 @@ public class LoginActivity extends AppCompatActivity {
         novaContaTextview = findViewById(R.id.btn_registro);
         signInButtonGoogle = findViewById(R.id.sign_in_button_google_id);
 
+        SharedPreferences sharedPreferences = getSharedPreferences(Constantes.SHARED_PREFERENCES, Context.MODE_PRIVATE);
+
+        if(sharedPreferences.contains(Constantes.EMAIL)){
+            emailEditText.setText(sharedPreferences.getString(Constantes.EMAIL, ""));
+        }
+
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -86,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.getAutenticadoLiveData()
                 .observe(this, autenticado -> {
                     if (autenticado){
-                        irParaPreferencias();
+                        logar();
                     } else {
                         Toast.makeText(this, "Falha na autenticação!", Toast.LENGTH_SHORT).show();
                     }
@@ -120,6 +129,14 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = emailEditText.getText().toString();
         String senha = senhaEditText.getText().toString();
+
+        emailEditText.setError(null);
+        emailEditText.setError(null);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("BCLIPAPP", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("EMAIL", email);
+        editor.commit();
 
         loginViewModel.autenticarUsuario(email, senha);
     }
