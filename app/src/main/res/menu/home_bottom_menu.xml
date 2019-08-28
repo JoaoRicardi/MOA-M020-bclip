@@ -11,8 +11,8 @@
         android:icon="@drawable/ic_bottom_favoritos"/>
 
 
-    <item android:id="@+id/buscar_bottom_id"
+    <item android:id="@+id/prefrencias_bottom_id"
         android:title="Segmentos"
-        android:icon="@drawable/ic_bottom_buscar"/>
+        android:icon="@drawable/ic_preferencias"/>
 
 </menu>

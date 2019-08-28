@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
         Preferencia preferencia4 = new Preferencia(04,"Ciência", false);
         Preferencia preferencia5 = new Preferencia(05,"Esportes", false);
         Preferencia preferencia6 = new Preferencia(06,"Entretenimento", false);
-        Preferencia preferencia7 = new Preferencia(07,"Geral", true);
+        Preferencia preferencia7 = new Preferencia(07,"General", true);
 
         viewModel.inserirPreferencias(preferencia1);
         viewModel.inserirPreferencias(preferencia2);
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         viewModel.inserirPreferencias(preferencia7);
     }
 
-    private void logar() {
+    public void logar() {
 
 
         String email = emailEditText.getText().toString();
@@ -145,12 +145,12 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.autenticarUsuario(email, senha);
     }
 
-    private void irParaPreferencias() {
+    public void irParaPreferencias() {
         Intent intent = new Intent(this, PreferenciasActivity.class);
         startActivity(intent);
     }
 
-    private void irParaCadastro() {
+    public void irParaCadastro() {
         Intent intent = new Intent(this, CadastroActivity.class);
         startActivity(intent);
 
