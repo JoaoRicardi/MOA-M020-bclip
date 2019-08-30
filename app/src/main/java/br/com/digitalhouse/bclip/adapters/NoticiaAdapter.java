@@ -1,6 +1,5 @@
 package br.com.digitalhouse.bclip.adapters;
 
-import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,23 +93,46 @@ public class NoticiaAdapter extends RecyclerView.Adapter<NoticiaAdapter.ViewHold
             descricaoNoticia.setText(noticiaFromApi.getSource().getName());
             Picasso.get().load(noticiaFromApi.getUrlToImage()).into(imagemNoticia);
 
-            // if (favorito)
-            salvarNoticiaButton.setColorFilter(R.color.verde, PorterDuff.Mode.SRC_ATOP);
-            //else
-//            salvarNoticiaButton.setColorFilter(R.color.preto, PorterDuff.Mode.SRC_ATOP);
+            compartilharNoticiaButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    noticiaListerner.compartilharNoticia(noticiaFromApi);
+
+                }
+            });
+
+
+
+            noticiaListerner.setupFavoritoButton(noticiaFromApi, salvarNoticiaButton);
 
             salvarNoticiaButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // if (!favorito)
-                    noticiaListerner.salvarFavoritosFirebase(noticiaFromApi);
-                    // else -> deletar do firebase
-                    //   noticiaListerner.deletarFavoritoFirebase(noticiaFromApi);
+
+                     if (noticiaFromApi.isFavorito()) {
+                         noticiaListerner.deletarFavorito(noticiaFromApi);
+                         salvarNoticiaButton.setBackgroundResource(R.drawable.ic_favoritas_off);
+                     } else {
+                         noticiaListerner.salvarFavorito(noticiaFromApi, salvarNoticiaButton);
+                         salvarNoticiaButton.setBackgroundResource((R.drawable.ic_favoritas_on));
+                     }
+
+
                 }
             });
+
+
         }
 
 
 
+
+
+
+        }
+
+
+
+
     }
-}
+

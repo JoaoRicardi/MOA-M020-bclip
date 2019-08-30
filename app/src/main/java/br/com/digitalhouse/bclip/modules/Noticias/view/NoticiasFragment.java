@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,12 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,8 +42,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NoticiasFragment extends Fragment implements NoticiaListener{
-
+public class NoticiasFragment extends Fragment implements NoticiaListener {
 
 
     private AppDatabase db;
@@ -48,7 +51,6 @@ public class NoticiasFragment extends Fragment implements NoticiaListener{
     private NoticiaAdapter noticiaAdapter;
 
     private static final String TAG = "NoticiaFragment";
-
 
 
     public NoticiasFragment() {
@@ -83,13 +85,14 @@ public class NoticiasFragment extends Fragment implements NoticiaListener{
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(preferenciaEmpresas -> {
-                        noticiaViewModel.atualizarNoticiasFromApi(preferenciaEmpresas);
+                    noticiaViewModel.atualizarNoticiasFromApi(preferenciaEmpresas);
                 });
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             String email = firebaseUser.getEmail();
-            String nome = firebaseUser.getDisplayName();}
+            String nome = firebaseUser.getDisplayName();
+        }
 
 
         noticiaViewModel.getNoticiaFromApiLiveData()
@@ -114,7 +117,7 @@ public class NoticiasFragment extends Fragment implements NoticiaListener{
     }
 
     @Override
-    public void salvarFavoritosFirebase(NoticiaFromApi noticia) {
+    public void salvarFavorito(NoticiaFromApi noticia, ImageView salvarNoticiaButton) {
         Map<String, Object> noticiaDb = new HashMap<>();
         noticiaDb.put("title", noticia.getTitle());
         noticiaDb.put("source", noticia.getSource().getName());
@@ -126,23 +129,84 @@ public class NoticiasFragment extends Fragment implements NoticiaListener{
         firebaseDb.collection("usuario")
                 .document(firebaseUser.getUid())
                 .collection("noticias favoritas")
-                .add(noticiaDb)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                .document(noticia.getTitle())
+                .set(noticiaDb)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "Noticia salva com ID: " + documentReference.getId());
-
-
+                    public void onSuccess(Void aVoid) {
+                        salvarNoticiaButton.setBackgroundResource(R.drawable.ic_favoritas_on);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Erro ao adicionar documento", e);
+                        Log.w(TAG, "Error writing document", e);
                     }
                 });
+    }
+
+    public void compartilharNoticia(NoticiaFromApi noticia) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TITLE, noticia.getTitle());
+        intent.putExtra(Intent.EXTRA_SUBJECT, noticia.getUrl());
+        startActivity(Intent.createChooser(intent, "Compartilhar"));
+
+    }
+
+    @Override
+    public void setupFavoritoButton(NoticiaFromApi noticia, ImageView salvarNoticiaButton) {
+        firebaseDb.collection("usuario")
+                .document(firebaseUser.getUid())
+                .collection("noticias favoritas")
+                .whereEqualTo("title", noticia.getTitle())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            if (task.getResult().size() > 0) {
+                                salvarNoticiaButton.setBackgroundResource(R.drawable.ic_favoritas_on);
+                                noticia.setFavorito(true);
+                            } else {
+                                salvarNoticiaButton.setBackgroundResource(R.drawable.ic_favoritas_off);
+                                noticia.setFavorito(false);
+                            }
+
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+    }
+
+    @Override
+    public void deletarFavorito(NoticiaFromApi noticia) {
+        firebaseDb.collection("usuario")
+                .document(firebaseUser.getUid())
+                .collection("noticias favoritas")
+                .document(noticia.getTitle())
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+
+                    }
+
+
 
     }
 
 
-}

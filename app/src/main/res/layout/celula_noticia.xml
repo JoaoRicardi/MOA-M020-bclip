@@ -79,19 +79,18 @@
 
                 <ImageView
                     android:id="@+id/salvar_noticia_btn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:srcCompat="@drawable/ic_bottom_favoritos"
-                    android:layout_gravity="right"
-                    android:padding="10dp"/>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"/>
 
-            <ImageView
-                android:id="@+id/compartilhar_noticia_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="right"
-                android:src="@drawable/icone_compartilhar"
-                android:padding="10dp"/>
+                <ImageView
+                    android:id="@+id/compartilhar_noticia_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@android:drawable/ic_menu_share" />
 
             </LinearLayout>
 

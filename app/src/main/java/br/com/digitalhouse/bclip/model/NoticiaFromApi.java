@@ -10,6 +10,7 @@ public class NoticiaFromApi implements Serializable {
     private String urlToImage;
     private String url;
     private String publishedAt;
+    private boolean favorito;
 
     public String getPublishedAt() {
         return publishedAt;
@@ -57,5 +58,13 @@ public class NoticiaFromApi implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 }

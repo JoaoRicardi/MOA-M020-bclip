@@ -103,7 +103,7 @@ public class NoticiaPreferenciasAdapter extends RecyclerView.Adapter<NoticiaPref
                 @Override
                 public void onClick(View view) {
                     // if (!favorito)
-                    noticiaListerner.salvarFavoritosFirebase(noticiaFromApi);
+                    noticiaListerner.salvarFavorito(noticiaFromApi, salvarNoticiaButton);
                     // else -> deletar do firebase
                     //   noticiaListerner.deletarFavoritoFirebase(noticiaFromApi);
                 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.com.digitalhouse.bclip.activities.HomeActivity;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
@@ -35,9 +36,12 @@ public class NoticiaViewModel extends AndroidViewModel {
         String search = new String();
 
         for (int i = 0; i < preferenciaEmpresasList.size(); i++){
-            search += preferenciaEmpresasList.get(i).getPreferenciaEmpresa();
-            if(i < preferenciaEmpresasList.size() - 1){
-                search += " OR ";
+            String preferenciaEmpresa = preferenciaEmpresasList.get(i).getPreferenciaEmpresa();
+            if(!preferenciaEmpresa.isEmpty()){
+                search += preferenciaEmpresa;
+                if(i < preferenciaEmpresasList.size() - 1 ){
+                    search += " OR ";
+                }
             }
         }
 
