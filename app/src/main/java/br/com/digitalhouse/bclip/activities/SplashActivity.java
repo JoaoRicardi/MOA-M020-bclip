@@ -46,8 +46,8 @@ public class SplashActivity extends AppCompatActivity {
 
         PreferenciasViewModel viewModel = ViewModelProviders.of(this).get(PreferenciasViewModel.class);
 
-        Preferencia preferencia1 = new Preferencia(01,"business", false, "Negócios");
-        Preferencia preferencia2 = new Preferencia(02,"technology", false, "Tecnologia");
+        Preferencia preferencia1 = new Preferencia(01,"technology", false, "Negócios");
+        Preferencia preferencia2 = new Preferencia(02,"business", false, "Tecnologia");
         Preferencia preferencia3 = new Preferencia(03,"health", false, "Saúde");
         Preferencia preferencia4 = new Preferencia(04,"science", false, "Ciência");
         Preferencia preferencia5 = new Preferencia(05,"sports", false, "Esportes");
