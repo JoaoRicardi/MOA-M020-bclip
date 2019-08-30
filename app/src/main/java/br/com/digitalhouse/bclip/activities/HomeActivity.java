@@ -129,6 +129,8 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     private void signOut() {
         firebaseAuth.getInstance()
                 .signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
 
     }
 }

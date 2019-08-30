@@ -32,6 +32,7 @@ import br.com.digitalhouse.bclip.database.AppDatabase;
 import br.com.digitalhouse.bclip.database.AppDatabasePreferencia;
 import br.com.digitalhouse.bclip.interfaces.NoticiaListener;
 import br.com.digitalhouse.bclip.model.NoticiaFromApi;
+import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.modules.Noticias.viewmodel.NoticiaViewModel;
 import br.com.digitalhouse.bclip.modules.NoticiasPreferencias.viewmodel.NoticiaPreferenciasViewModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -72,7 +73,6 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         RecyclerView recyclerView = view.findViewById(R.id.noticias_preferencias_recycler_id);
-
         recyclerView.setAdapter(noticiaAdapter);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -81,7 +81,7 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
         db = Room.databaseBuilder(getContext(),
                 AppDatabasePreferencia.class, AppDatabasePreferencia.DATABASE_NAME).build();
 
-        db.preferenciasDao().getAll()
+        db.preferenciasDao().getAll() // TODO buscar preferencias salvas (database ou firebase)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(preferencia -> {
@@ -102,6 +102,49 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
 
 
     }
+
+    public String traduzirParaEmIngles (String preferenciaPortugues){
+
+        String preferenciaEmIngles = "";
+
+        switch(preferenciaPortugues){
+            case "Negócios":
+                 preferenciaEmIngles = "business";
+                break;
+
+            case "Tecnologia":
+                 preferenciaEmIngles = "technology";
+                break;
+
+            case "Saúde":
+                preferenciaEmIngles = "health";
+                break;
+
+            case "Ciência":
+                preferenciaEmIngles = "science";
+                break;
+
+            case "Esportes":
+                preferenciaEmIngles = "sports";
+                break;
+
+            case "Entretenimento":
+                preferenciaEmIngles = "entertainment";
+                break;
+
+            case "Geral":
+                preferenciaEmIngles = "general";
+                break;
+
+        }
+
+        return preferenciaEmIngles;
+
+
+    }
+
+
+
 
     @Override
     public void onNoticiaClicado(NoticiaFromApi noticia) {

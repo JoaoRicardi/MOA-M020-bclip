@@ -21,10 +21,15 @@ public class Preferencia implements Serializable {
     private Boolean ativado;
 
 
-    public Preferencia(int idPreferencia, String preferencia, Boolean ativado) {
+    @ColumnInfo(name = "label")
+    private String label;
+
+
+    public Preferencia(int idPreferencia, String preferencia, Boolean ativado, String label) {
         this.idPreferencia = idPreferencia;
         this.preferencia = preferencia;
         this.ativado = ativado;
+        this.label = label;
     }
 
     public Preferencia() {
@@ -52,5 +57,13 @@ public class Preferencia implements Serializable {
 
     public void setIdPreferencia(int idPreferencia) {
         this.idPreferencia = idPreferencia;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

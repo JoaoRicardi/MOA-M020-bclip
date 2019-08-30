@@ -6,6 +6,7 @@ import androidx.room.Query;
 import java.util.List;
 import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 import static androidx.room.OnConflictStrategy.REPLACE;

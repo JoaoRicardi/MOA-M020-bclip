@@ -15,4 +15,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="BlueAccent" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">#012e40</item>
+    </style>co
+
 </resources>

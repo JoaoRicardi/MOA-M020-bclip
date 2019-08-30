@@ -11,7 +11,6 @@ public interface NoticiasApiPreferencias {
     Observable<NoticiaFromApiResponse> getNoticiasFromApiPreferencias(@Query("apiKey") String apiKey,
                                                           @Query("format") String format,
                                                           @Query("category")String category,
-                                                          @Query("q") String search,
                                                           @Query("pageSize") int pageSize,
                                                           @Query("country") String country);
 }
