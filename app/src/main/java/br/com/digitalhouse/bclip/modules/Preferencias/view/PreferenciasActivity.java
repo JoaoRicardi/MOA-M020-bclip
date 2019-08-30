@@ -89,12 +89,6 @@ public class PreferenciasActivity extends AppCompatActivity implements OnPrefere
     }
 
 
-//    @Override
-//    public void onPreferenciaClick(int position) {
-//
-//        Toast.makeText(this, "A opção  " + db.preferenciasDao() + " foi selecionada!", Toast.LENGTH_SHORT).show();
-//
-//
-//    }
+
 }
 

@@ -31,18 +31,9 @@ public class NoticiaPreferenciasViewModel extends AndroidViewModel {
     }
 
     public void atualizarNoticiasPreferenciaFromApi (List<Preferencia> preferenciaList) {
-        String search = new String();
-
-        for (int i = 0; i < preferenciaList.size(); i++){
-            search += preferenciaList.get(i).getPreferencia();
-            if(i < preferenciaList.size() - 1){
-                search += " , ";
-            }
-        }
-
-
+        String search = preferenciaList.get(0).getPreferencia();
         disposable.add(
-                noticiasRepository.getNoticiaFromApiList(search)
+                noticiasRepository.getNoticiaFromApiListPreferencias(search)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(noticiasFromApiList -> noticiaFromApiLiveData.setValue(noticiasFromApiList))

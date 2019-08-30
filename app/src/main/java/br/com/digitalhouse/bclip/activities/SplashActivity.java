@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,23 +26,33 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                irParaLogin();
+                if (auth.getCurrentUser() != null) {
+                    // User is signed in (getCurrentUser() will be null if not signed in)
+                    Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    irParaLogin();
+                }
             }
-        },3000);
-
+        }, 3000);
 
         PreferenciasViewModel viewModel = ViewModelProviders.of(this).get(PreferenciasViewModel.class);
 
-        Preferencia preferencia1 = new Preferencia(01,"business", false);
-        Preferencia preferencia2 = new Preferencia(02,"technology", false);
-        Preferencia preferencia3 = new Preferencia(03,"health", false);
-        Preferencia preferencia4 = new Preferencia(04,"science", true);
-        Preferencia preferencia5 = new Preferencia(05,"sports", false);
-        Preferencia preferencia6 = new Preferencia(06,"entertainment", false);
-        Preferencia preferencia7 = new Preferencia(07,"general", true);
+        Preferencia preferencia1 = new Preferencia(01,"technology", false, "Negócios");
+        Preferencia preferencia2 = new Preferencia(02,"business", false, "Tecnologia");
+        Preferencia preferencia3 = new Preferencia(03,"health", false, "Saúde");
+        Preferencia preferencia4 = new Preferencia(04,"science", false, "Ciência");
+        Preferencia preferencia5 = new Preferencia(05,"sports", false, "Esportes");
+        Preferencia preferencia6 = new Preferencia(06,"entertainment", false, "Entretenimento");
+        Preferencia preferencia7 = new Preferencia(07,"general", false, "Geral");
 
         viewModel.inserirPreferencias(preferencia1);
         viewModel.inserirPreferencias(preferencia2);
@@ -49,13 +61,14 @@ public class SplashActivity extends AppCompatActivity {
         viewModel.inserirPreferencias(preferencia5);
         viewModel.inserirPreferencias(preferencia6);
         viewModel.inserirPreferencias(preferencia7);
-
     }
 
     private void irParaLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }

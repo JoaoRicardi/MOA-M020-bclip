@@ -92,18 +92,20 @@
                     android:textColor="@color/colorAccent"
                     android:textAllCaps="true"/>
 
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/sign_in_button_google_id"
+                    android:layout_width="323dp"
+                    android:layout_height="42dp"
+                    />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="criar nova conta"
                     android:layout_gravity="left"
                     android:textStyle="bold"
+                    android:layout_marginLeft="8dp"
                     android:id="@+id/btn_registro"/>
-
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/sign_in_button_google_id"
-                    android:layout_width="323dp"
-                    android:layout_height="42dp" />
 
 
             </LinearLayout>

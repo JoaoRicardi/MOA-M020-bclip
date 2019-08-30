@@ -83,7 +83,6 @@
                     android:layout_height="24dp"
                     android:layout_marginRight="24dp"
                     android:layout_marginBottom="8dp"
-                    app:srcCompat="@drawable/ic_bottom_favoritos"
                     android:layout_gravity="right" />
                     android:layout_margin="5dp"/>
 

@@ -8,7 +8,7 @@ import br.com.digitalhouse.bclip.database.dao.PreferenciaEmpresasDao;
 import br.com.digitalhouse.bclip.model.Preferencia;
 import br.com.digitalhouse.bclip.model.PreferenciaEmpresas;
 
-@Database(entities = {Preferencia.class}, version = 1)
+@Database(entities = {Preferencia.class}, version = 2)
 
 public abstract class AppDatabasePreferencia extends RoomDatabase {
 

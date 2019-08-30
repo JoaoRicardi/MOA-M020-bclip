@@ -28,19 +28,6 @@ public class PreferenciaRepository {
                .observeOn(AndroidSchedulers.mainThread())
                .subscribeOn(Schedulers.newThread());
    }
-//
-//    public Completable deletarPreferencia(Context context, Preferencia preferencia){
-//        AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-//        return Completable.fromAction(()->db.preferenciasDao().delete(preferencia))
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread());
-//    }
-//
-//    public Completable updatePreferencia(Context context, Preferencia preferencia){
-//        AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, AppDatabase.DATABASE_NAME).build();
-//        return Completable.fromAction(()->db.preferenciasDao().update(preferencia))
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.newThread());
-//    }
+
 
 }
