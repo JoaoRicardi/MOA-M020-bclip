@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context="br.com.digitalhouse.bclip.activities.DetalheNoticia">
 
+    <ProgressBar
+        android:id="@+id/progress_bar_detalhe_noticias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:theme="@style/BlueAccent"/>
+
     <WebView
         android:id="@+id/detalhe_noticia_web_view_id"
         android:layout_width="match_parent"

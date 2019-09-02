@@ -4,9 +4,9 @@
     <item
         android:id="@+id/item_preferencias"
         android:title="Preferências"/>
-    <item
-        android:id="@+id/item_concorrentes"
-        android:title="Concorrentes"/>
+<!--    <item-->
+<!--        android:id="@+id/item_concorrentes"-->
+<!--        android:title="Concorrentes"/>-->
 
     <item
         android:id="@+id/item_sair"

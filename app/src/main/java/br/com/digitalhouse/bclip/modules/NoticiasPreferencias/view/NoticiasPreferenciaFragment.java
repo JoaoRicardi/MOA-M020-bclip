@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -50,6 +51,7 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
     private FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser;
     private NoticiaAdapter noticiaAdapter;
+    private ProgressBar progressBar;
 
     private static final String TAG = "NoticiaPreferenciaFragment";
 
@@ -80,6 +82,8 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
 
         NoticiaPreferenciasViewModel noticiaPreferenciasViewModel = ViewModelProviders.of(getActivity()).get(NoticiaPreferenciasViewModel.class);
 
+        progressBar = view.findViewById(R.id.progress_bar_preferencias);
+
         db = Room.databaseBuilder(getContext(),
                 AppDatabasePreferencia.class, AppDatabasePreferencia.DATABASE_NAME).build();
 
@@ -97,7 +101,11 @@ public class NoticiasPreferenciaFragment extends Fragment implements NoticiaList
 
 
         noticiaPreferenciasViewModel.getNoticiaFromApiLiveData()
-                .observe(getActivity(), noticiaFromApiList -> noticiaAdapter.atualizarNoticias(noticiaFromApiList));
+                .observe(getActivity(), noticiaFromApiList -> {
+                        noticiaAdapter.atualizarNoticias(noticiaFromApiList);
+                        progressBar.setVisibility(View.GONE);
+
+     });
 
 
         return view;

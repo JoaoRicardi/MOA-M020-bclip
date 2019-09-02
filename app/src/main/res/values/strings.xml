@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Bclip</string>
 
-    <string name="texto_preferencias">Selecione os campos de atuação do seu interesse e receba sempre as notícias mais importantes para você e sua Empresa.</string>
+    <string name="texto_preferencias">Selecione o campo de atuação do seu interesse e receba sempre as notícias mais importantes para você e sua empresa.</string>
     <string name="texto_cadastro_empresas">inserindo o nome da empresa e dos seus concorrentes você recebe um clipping sobre o mercado que sua empresa atua.</string>
 
 

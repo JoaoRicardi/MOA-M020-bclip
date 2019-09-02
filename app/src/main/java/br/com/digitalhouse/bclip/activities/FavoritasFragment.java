@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -40,6 +41,7 @@ public class FavoritasFragment extends Fragment {
     private FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private static final String TAG = "FavoritaFragment";
+    private ProgressBar progressBar;
 
 
 
@@ -56,8 +58,11 @@ public class FavoritasFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favoritas, container, false);
 
         recyclerView = view.findViewById(R.id.favoritas_recycler_view_id);
+        progressBar = view.findViewById(R.id.progress_bar_favoritas);
 
         ArrayList<NoticiaFromApi> noticiaFavoritaList = new ArrayList<>();
+
+
 
         favoritasAdapter = new FavoritasAdapter(noticiaFavoritaList);
 
@@ -102,6 +107,7 @@ public class FavoritasFragment extends Fragment {
 
                                 noticiaFromApiList.add(noticiaFromApi);
                                 favoritasAdapter.atualizarFavoritas(noticiaFromApiList);
+                                progressBar.setVisibility(View.GONE);
 
                             }
 

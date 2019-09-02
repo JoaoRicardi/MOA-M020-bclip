@@ -60,7 +60,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:text=""
+                android:text="texto"
                 android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"

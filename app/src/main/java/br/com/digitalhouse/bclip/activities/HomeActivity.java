@@ -91,10 +91,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
                 Intent intent = new Intent(this, PreferenciasActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.item_concorrentes:
-                Intent intent1 = new Intent(this, CadastroEmpresaActivity.class);
-                startActivity(intent1);
-                return true;
+//            case R.id.item_concorrentes:
+//                Intent intent1 = new Intent(this, CadastroEmpresaActivity.class);
+//                startActivity(intent1);
+//                return true;
             case R.id.item_sair:
                 signOut();
             default:
@@ -108,10 +108,10 @@ public class HomeActivity extends AppCompatActivity implements FragmentActionsLi
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
 
-            case R.id.item_concorrentes:
-                Intent intent = new Intent(this, CadastroEmpresaActivity.class);
-                startActivity(intent);
-                return true;
+//            case R.id.item_concorrentes:
+//                Intent intent = new Intent(this, CadastroEmpresaActivity.class);
+//                startActivity(intent);
+//                return true;
 
             case R.id.item_preferencias:
                 Intent intent2 = new Intent(this, PreferenciasActivity.class);

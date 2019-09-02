@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -49,6 +50,7 @@ public class NoticiasFragment extends Fragment implements NoticiaListener {
     private FirebaseFirestore firebaseDb = FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser;
     private NoticiaAdapter noticiaAdapter;
+    private ProgressBar progressBar;
 
     private static final String TAG = "NoticiaFragment";
 
@@ -78,6 +80,8 @@ public class NoticiasFragment extends Fragment implements NoticiaListener {
 
         NoticiaViewModel noticiaViewModel = ViewModelProviders.of(getActivity()).get(NoticiaViewModel.class);
 
+        progressBar = view.findViewById(R.id.progress_bar_noticias);
+
         db = Room.databaseBuilder(getContext(),
                 AppDatabase.class, AppDatabase.DATABASE_NAME).build();
 
@@ -96,7 +100,12 @@ public class NoticiasFragment extends Fragment implements NoticiaListener {
 
 
         noticiaViewModel.getNoticiaFromApiLiveData()
-                .observe(getActivity(), noticiaFromApiList -> noticiaAdapter.atualizarNoticias(noticiaFromApiList));
+                .observe(getActivity(), noticiaFromApiList ->{
+                    noticiaAdapter.atualizarNoticias(noticiaFromApiList);
+                    progressBar.setVisibility(View.GONE);
+                });
+
+
 
 
         return view;
